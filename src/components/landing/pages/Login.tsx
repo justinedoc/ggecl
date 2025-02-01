@@ -18,7 +18,6 @@ const Login = () => {
       <div className="absolute top-10 left-20 w-56 h-56 bg-blue-500/20 rounded-full blur-3xl"></div>
       <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-green-400/20 rounded-full blur-2xl"></div>
 
-      {/* Left Side */}
       <div className="flex flex-col justify-center items-center p-6 sm:p- z-10 mt-8">
         <div className="w-full max-w-md space-y-5">
           <div className="text-center mb-5">
@@ -84,7 +83,6 @@ const Login = () => {
             </button>
           </form>
 
-          {/* Social Login Buttons */}
           <div className="mt-6 flex justify-center space-x-4">
             <button className="btn btn-outline btn-google flex items-center space-x-2 px-5 py-2 rounded-md text-white">
               <FaGoogle className="text-xl" />
@@ -113,7 +111,6 @@ const Login = () => {
         </div>
       </div>
 
-      {/* Right Side */}
       <div className='h-screen max-w-7xl md:block hidden'>
         <img src="src/assets/images/f1.png" className='h-full w-full bg-cover' alt="" />
       </div>

@@ -1,17 +1,44 @@
-// import { FaSearch } from "react-icons/fa";
+import { useEffect, useState } from "react";
 import StudentHero from "@/components/ui/StudentHero";
-import sktech from "@/assets/images/sktech.svg"; // Import images properly
+import sktech from "@/assets/images/sktech.svg";
 import circle2 from "@/assets/images/circle2.png";
 import "./styles.css";
 
 function Hero() {
-  return (
-    <div className="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-12 py-20 bg-white dark:bg-gray-900 text-gray-800 dark:text-white w-full">
-      {/* Left Side: Text & Search */}
-      <div className="w-full md:w-1/2 text-center md:text-left space-y-6">
-        {/* Blurry Background Circle */}
-        <div className="absolute -top-10 -left-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
+  const [counts, setCounts] = useState({ courses: 0, students: 0, caseStudies: 0, instructors: 0 });
 
+  useEffect(() => {
+    const targetCounts = { courses: 250, students: 5000, caseStudies: 120, instructors: 50 };
+    let interval: NodeJS.Timeout;
+
+    const animateCount = () => {
+      interval = setInterval(() => {
+        setCounts((prev) => ({
+          courses: Math.min(prev.courses + 5, targetCounts.courses),
+          students: Math.min(prev.students + 100, targetCounts.students),
+          caseStudies: Math.min(prev.caseStudies + 3, targetCounts.caseStudies),
+          instructors: Math.min(prev.instructors + 2, targetCounts.instructors),
+        }));
+
+        if (
+          counts.courses >= targetCounts.courses &&
+          counts.students >= targetCounts.students &&
+          counts.caseStudies >= targetCounts.caseStudies &&
+          counts.instructors >= targetCounts.instructors
+        ) {
+          clearInterval(interval);
+        }
+      }, 50);
+    };
+
+    animateCount();
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-12 py-36 md:py-28 bg-white dark:bg-gray-900 text-gray-800 dark:text-white w-full">
+      <div className="w-full md:w-1/2 text-center md:text-left space-y-6">
+        <div className="absolute -top-10 -left-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
 
         <h1 className="font-bold text-3xl mt-5 md:text-5xl leading-tight md:leading-snug">
           Empower your future with courses designed to
@@ -25,27 +52,33 @@ function Hero() {
           We bring together world-class instructors, interactive content, and a supportive community to help you achieve your personal and professional goals.
         </p>
 
-        {/* Search Bar */}
-        {/* <div className="relative w-full max-w-md mx-auto md:mx-0">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="w-full pl-5 pr-12 py-3 bg-slate-200 text-lg border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
-          />
-          <button className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-800">
-            <FaSearch size={20} />
-          </button>
-        </div> */}
+        <div className="relative w-full max-w-md mx-auto md:mx-0">
+          <button className="btn py-4 px-10 rounded-md text-white  md:block hidden">Start your instructure journey</button>
+        </div>
       </div>
 
-      {/* Right Side: StudentHero */}
       <div className="w-full md:w-1/2 flex justify-center mt-10 md:mt-0 md:ml-10">
         <StudentHero />
       </div>
 
-      {/* Floating Spinning Image */}
-      <div className="absolute md:top-24 md:right-28 top-2/4 right-14 animate-spin-slow">
-        <img src={circle2} alt="Spinning Design" className="w-24 h-24 md:w-28 md:h-28" />
+      <div className="absolute md:top-24 hidden left-12 top-2/4 right-14 animate-spin-slow">
+        <img src={circle2} alt="Spinning Design" className="w-24 h-24 md:w-28 md:h-28 md:mt-5 -mt-5" />
+      </div>
+
+      <div className="absolute left-0 md:bottom-2 bottom-4 text-center w-full md:px-6 px-2">
+        <div className="flex  justify-center md:justify-evenly text-center md:text-left bg-gray-50 dark:bg-gray-800 rounded-lg md:px-6 px-1 py-1 shadow-md">
+          {[
+            { label: "Courses", value: counts.courses, suffix: "+" },
+            { label: "Students", value: counts.students, suffix: "+" },
+            { label: "Case Studies", value: counts.caseStudies, suffix: "+" },
+            { label: "Instructors", value: counts.instructors, suffix: "+" },
+          ].map((item, index) => (
+            <div key={index} className="w-1/2 md:w-1/4 py-4">
+              <h3 className="md:text-3xl text-md font-bold dark:text-blue-100 text-gray-700">{item.value}{item.suffix}</h3>
+              <p className="text-gray-800 dark:text-gray-100 md:text-xl text-sm">{item.label}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

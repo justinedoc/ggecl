@@ -12,11 +12,6 @@
     background: #184471;
   }
   
-  /* .io{
-    background: #123354;
-    transition: .4s linear;
-    width: 300px;
-  } */
   
   .spinning-image {
     animation: spin 25s linear infinite;

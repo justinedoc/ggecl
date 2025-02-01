@@ -2,7 +2,7 @@
 const StudentHero = () => {
   return (
     <>
-    <img src="src/assets/images/about.png" style={{width:"440px"}} alt="" />
+    <img src="src/assets/images/Hore.png" style={{width:"480px"}} alt="" />
     </>
   );
 };

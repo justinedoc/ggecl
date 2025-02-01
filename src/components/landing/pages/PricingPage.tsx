@@ -12,9 +12,7 @@ const PricingPage: React.FC = () => {
         </p>
       </div>
 
-      {/* Pricing Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {/* Card 1 */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-2xl p-6 hover:shadow-2xl transition-all duration-300">
           <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
             Basic Plan
@@ -39,7 +37,6 @@ const PricingPage: React.FC = () => {
           </button>
         </div>
 
-        {/* Card 2 */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 hover:shadow-xl transition-all duration-300">
           <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
             Professional Plan
@@ -64,7 +61,6 @@ const PricingPage: React.FC = () => {
           </button>
         </div>
 
-        {/* Card 3 */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 hover:shadow-xl transition-all duration-300 h-max">
           <h3 className="text-2xl font-semibold text-gray-800 dark:text-white mb-4">
             Enterprise Plan

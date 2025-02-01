@@ -102,7 +102,6 @@ const Signup = () => {
               Create Account
             </button>
           </form>
-{/* Social Login Buttons */}
           <div className="mt-6 flex justify-center space-x-4">
             <button className="btn btn-outline btn-google flex items-center space-x-2 px-5 py-2 rounded-md text-white">
               <FaGoogle className="text-xl" />
@@ -123,15 +122,14 @@ const Signup = () => {
           <div className="text-center mt-4">
             <p className="text-base-content/60">
               Already have an account?{' '}
-              <Link to="/signup" className="link link-primary">
-                Sign up
+              <Link to="/login" className="link link-primary">
+                Login
               </Link>
             </p>
           </div>
         </div>
       </div>
 
-      {/* Right Side */}
       <div className='h-screen max-w-7xl md:block hidden'>
         <img src="src/assets/images/Frame 427319048.png" className='h-full w-full bg-cover' alt="" />bi-Tech2
       </div>
