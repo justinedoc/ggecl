@@ -1,9 +1,8 @@
 import About from "./pages/About";
 import Hero from "./pages/Hero";
 import Navbar from "./pages/Navbar";
-import Cta from "./pages/Cta";
+import Cta from "../ui/Cta";
 import PricingPage from "./pages/PricingPage";
-import Login from "./pages/Login";
 
 function Home() {
   return (
@@ -13,7 +12,6 @@ function Home() {
       <About />
       <Cta />
       <PricingPage />
-      <Login />
     </>
   );
 }

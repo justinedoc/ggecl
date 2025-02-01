@@ -22,7 +22,6 @@ const Navbar: React.FC = () => {
   return (
       <nav className="fixed w-full bg-white dark:bg-gray-900 dark:border-b-2 z-50 transition-all duration-500 ease-in-out py-2" style={{ minHeight: "90px", alignItems: "center", alignContent: "center" }}>
         {/* Blurry Background Circles */}
-      <div className="absolute -top-10 -left-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"></div>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
@@ -52,7 +51,7 @@ const Navbar: React.FC = () => {
           {/* Right Side */}
           <div className="flex items-center space-x-4">
             {/* Login / Sign Up */}
-            <Link to="/" className="font-bold text-gray-700 dark:text-gray-300">Login</Link>
+            <Link to="/" className="font-bold text-gray-700 dark:text-gray-300 border py-3 px-6 border-cyan-900 rounded-md">Login</Link>
             <Link to="/login" className="hidden md:block text-white px-5 py-3 rounded-md btn">
             Get Started
             </Link>

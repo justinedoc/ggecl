@@ -2,9 +2,9 @@ import React from "react";
 
 const PricingPage: React.FC = () => {
   return (
-    <div className="bg-gray-100 py-16 px-4 md:px-8 ">
+    <div className="bg-gray-100 dark:bg-gray-900 py-16 px-4 md:px-8 ">
       <div className="max-w-7xl mx-auto text-center mb-12">
-        <h2 className="text-3xl font-extrabold text-gray-800">
+        <h2 className="text-3xl font-extrabold dark:text-gray-100 text-gray-800">
           Our Pricing Plans
         </h2>
         <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">
