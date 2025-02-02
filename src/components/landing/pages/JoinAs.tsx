@@ -20,6 +20,11 @@ function JoinAs() {
           </div>
         </div>
 
+
+
+
+        
+
         <div className="flex flex-col md:flex-row-reverse items-center  md:p-8 p-4">
           <div className="w-full md:w-1/2">
             <img src={studentImg} alt="Join as a Student" className="w-full h-auto object-cover rounded-lg" />

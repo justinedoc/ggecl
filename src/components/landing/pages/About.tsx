@@ -11,7 +11,7 @@ const About: React.FC = () => {
         
         <div className="md:w-1/2 space-y-6">
           <h2 className="text-4xl font-bold dark:text-blue-600  text-gray-200">
-            About Our LMS
+            About GGECL LMS
           </h2>
           <p className="text-lg text-gray-300 font-semibold dark:text-gray-800">
             Our Learning Management System is designed to empower learners and instructors with a seamless, interactive, and effective online education experience.
