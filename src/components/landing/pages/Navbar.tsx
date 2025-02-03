@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav
-      className="fixed w-full bg-white dark:bg-gray-900 dark:border-b-2 z-50 transition-all duration-300 ease-in-out py-2"
+      className="sticky top-0 left-0 w-full bg-white dark:bg-gray-900 dark:border-b-2 z-50 transition-all duration-300 ease-in-out py-2"
       style={{
         alignItems: "center",
         alignContent: "center",

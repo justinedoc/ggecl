@@ -47,11 +47,11 @@ function Hero() {
   }, []);
 
   return (
-    <div className="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-12 py-36 md:py-28 bg-white dark:bg-gray-900 text-gray-800 dark:text-white w-full">
+    <div className="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-12 pt-5 pb-36 bg-white dark:bg-gray-900 text-gray-800 dark:text-white w-full">
       <div className="w-full md:w-1/2 text-center md:text-left space-y-6">
         <div className="absolute -top-10 -left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
 
-        <h1 className="font-bold text-3xl mt-5 md:text-5xl leading-tight md:leading-snug">
+        <h1 className="font-bold text-[1.7rem] mt-5 md:text-5xl leading-tight md:leading-snug">
           Empower your future with courses designed to
           <span className="text-blue-600 flex flex-col items-center md:items-start mt-2">
             <p>fit your choice.</p>
@@ -63,13 +63,13 @@ function Hero() {
           </span>
         </h1>
 
-        <p className="text-md font-semibold md:text-xl leading-[2]">
+        <p className="text-md font-light md:text-xl leading-tighter">
           We bring together world-class instructors, interactive content, and a
           supportive community to help you achieve your personal and
           professional goals.
         </p>
 
-        <Button className="btn py-6 font-semibold text-md rounded-md text-white">
+        <Button className="btn font-semibold text-md rounded-md text-white">
           Start your instructure journey
         </Button>
       </div>
