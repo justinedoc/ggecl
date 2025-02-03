@@ -21,22 +21,21 @@ const Testimonial = () => {
   };
 
   return (
-    <div className="relative w-full overflow-hidden dark:bg-white bg-gray-900 py-10">
-      <div className="flex justify-between items-center p-6">
-        <h1 className="text-2xl font-bold dark:text-gray-800 text-white">
-          What our clients say about us
-        </h1>
-        <span className="flex gap-4">
-          <FaArrowAltCircleLeft
-            onClick={prevSlide}
-            className="text-4xl dark:text-gray-800 text-white cursor-pointer hover:scale-110 transition"
-          />
-          <FaArrowAltCircleRight
-            onClick={nextSlide}
-            className="text-4xl dark:text-gray-800 text-white cursor-pointer hover:scale-110 transition"
-          />
-        </span>
-      </div>
+    <div className="relative w-full overflow-hidden dark:bg-white bg-gray-900 py-10 px-4 md:px-16">
+      <h1 className="text-3xl text-center md:text-left font-bold dark:text-gray-800 text-white">
+        What our clients say about us
+      </h1>
+
+      <span className="flex gap-4 justify-end mb-4">
+        <FaArrowAltCircleLeft
+          onClick={prevSlide}
+          className="text-4xl dark:text-gray-800 text-white cursor-pointer hover:scale-110 transition"
+        />
+        <FaArrowAltCircleRight
+          onClick={nextSlide}
+          className="text-4xl dark:text-gray-800 text-white cursor-pointer hover:scale-110 transition"
+        />
+      </span>
 
       <div className="w-full overflow-hidden">
         <div
@@ -48,7 +47,7 @@ const Testimonial = () => {
           {Array(6)
             .fill("")
             .map((_, i) => (
-              <div key={i} className="min-w-[100%] lg:min-w-[25%] p-4">
+              <div key={i} className="min-w-[100%] lg:min-w-[25%] px-2">
                 <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col items-start">
                   <FaQuoteLeft className="text-gray-500 text-2xl mb-3" />
                   <p className="text-left text-gray-700 dark:text-white">

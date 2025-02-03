@@ -47,8 +47,8 @@ function Hero() {
   }, []);
 
   return (
-    <div className="relative flex flex-col md:flex-row items-center justify-between px-6 md:px-12 pt-5 pb-36 bg-white dark:bg-gray-900 text-gray-800 dark:text-white w-full">
-      <div className="w-full md:w-1/2 text-center md:text-left space-y-6">
+    <div className="relative flex flex-col md:flex-row items-center justify-between px-4 md:px-12 pt-5 pb-36 bg-white dark:bg-gray-900 text-gray-800 dark:text-white w-full">
+      <div className="w-full md:w-1/2 text-center md:text-left space-y-5">
         <div className="absolute -top-10 -left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
 
         <h1 className="font-bold text-[1.7rem] mt-5 md:text-5xl leading-tight md:leading-snug">

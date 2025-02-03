@@ -23,19 +23,19 @@ function Cta() {
   ];
 
   return (
-    <div className="reveal dark:bg-gray-900 bg-white text-gray-800 dark:text-white transition-all duration-500 ease-in-out h-full pt-10">
+    <div className="reveal transition-all duration-500 ease-in-out">
       {/* How to Start Section */}
-      <section className="flex flex-col items-center bg-gray-900 dark:bg-white py-16 px-4 relative mt-16">
+      <section className="flex flex-col items-center bg-gray-900 py-16 px-4 relative">
         {/* Background Blur Effect */}
-        <div className="absolute inset-0 bg-blue-500/20 -top-10 right-0 w-72 h-72 rounded-full blur-2xl"></div>
+        <div className="absolute inset-0 bg-blue-500/10 -top-10 right-0 w-72 h-72 rounded-full blur-2xl"></div>
 
         {/* Section Title */}
-        <h1 className="text-xl md:text-2xl bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-white p-3 px-6 rounded-full font-bold mb-6">
+        <h1 className="text-md md:text-lg bg-gray-100 text-gray-800 md:py-2 py-3 px-6 rounded-full font-semibold mb-6">
           How to Start
         </h1>
 
         {/* Section Description */}
-        <p className="text-gray-300 dark:text-gray-800 text-center max-w-2xl mb-10 leading-relaxed">
+        <p className="text-gray-300 text-center max-w-2xl mb-10 leading-relaxed">
           Begin your journey with our easy steps. Learn, explore, and grow with
           the best courses designed for your success.
         </p>
@@ -45,18 +45,18 @@ function Cta() {
           {steps.map((item, index) => (
             <div
               key={index}
-              className="bg-gray-800 dark:bg-gray-100 text-white dark:text-gray-900 rounded-xl shadow-lg p-5 w-full sm:w-1/2 lg:w-1/4 text-center flex flex-col items-center justify-center hover:scale-102 transition gap-1"
+              className="bg-gray-800 text-white rounded-xl shadow-lg p-5 w-full sm:w-1/2 lg:w-1/4 text-center flex flex-col items-center justify-center hover:scale-102 transition gap-1"
             >
               {/* Step Icon */}
               <img
                 src={item.img}
                 alt={item.title}
-                className="relative z-10 w-16 object-contain"
+                className="relative z-10 w-12 object-contain"
               />
 
               {/* Step Title & Description */}
               <h2 className="text-lg font-semibold">{item.title}</h2>
-              <p className="text-gray-400 dark:text-gray-700 text-sm">
+              <p className="text-gray-400 text-sm">
                 {item.desc}
               </p>
             </div>

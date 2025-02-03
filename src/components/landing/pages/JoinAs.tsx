@@ -1,6 +1,7 @@
 import teacherImg from "@/assets/images/Asset3.png";
 import studentImg from "@/assets/images/Asset2.png";
 import { Button } from "@/components/ui/button";
+import { FaArrowRight } from "react-icons/fa";
 
 function JoinAs() {
   return (
@@ -23,8 +24,8 @@ function JoinAs() {
             Get access to tools and resources to enhance your teaching
             experience.
           </p>
-          <Button className="text-white font-semibold px-5 py-4 rounded-md btn w-fit">
-            Become a Teacher
+          <Button className="text-white font-semibold px-5 py-4 rounded-md btn w-fit inline-flex items-center">
+            Start Your Instructor Journey <FaArrowRight />
           </Button>
         </div>
       </div>
@@ -45,8 +46,8 @@ function JoinAs() {
             Learn from industry experts, access world-class content, and develop
             skills that matter. Take control of your learning journey today!
           </p>
-          <Button className="text-white font-semibold px-5 py-4 rounded-md btn w-fit">
-            Start Learning
+          <Button className="text-white font-semibold px-5 py-4 rounded-md btn w-fit inline-flex items-center">
+            Start Learning <FaArrowRight />
           </Button>
         </div>
       </div>
