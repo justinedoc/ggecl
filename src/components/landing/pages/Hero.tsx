@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import StudentHero from "@/components/ui/StudentHero";
+import StudentHero from "@/components/landing/_components/StudentHero";
 import sktech from "@/assets/images/sktech.svg";
 import circle2 from "@/assets/images/circle2.png";
 import "./styles.css";
