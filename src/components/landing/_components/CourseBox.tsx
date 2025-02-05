@@ -36,7 +36,7 @@ function CourseBox({ course }: CourseType) {
       </CardHeader>
       <CardContent className="py-0 px-3">
         <DisplayRating rating={course.ratings} />
-        <p className="text-[13px] text-gray-600 space-x-1">
+        <p className="text-[13px] dark:text-gray-400 text-gray-600 space-x-1">
           <span>{course.duration}.</span>
           <span>{course.lectures} Lectures.</span>
           <span>{course.level}.</span>
@@ -63,7 +63,7 @@ function DisplayRating({
           <Star key={i} full={rating >= i + 1} />
         ))}
       </div>
-      <span className="text-[12px] text-gray-600 font-semibold">
+      <span className="text-[12px] dark:text-gray-400 text-gray-600 font-semibold">
         ({rating} Ratings)
       </span>
     </aside>

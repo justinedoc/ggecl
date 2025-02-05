@@ -21,8 +21,8 @@ const Testimonial = () => {
   };
 
   return (
-    <div className="relative w-full overflow-hidden dark:bg-white bg-gray-900 py-10 px-4 md:px-16">
-      <h1 className="text-3xl text-center md:text-left font-bold dark:text-gray-800 text-white">
+    <div className="relative w-full overflow-hidden bg-gray-900 py-10 px-4 md:px-16">
+      <h1 className="text-3xl text-center md:text-left font-bold text-white">
         What our clients say about us
       </h1>
 

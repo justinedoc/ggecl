@@ -12,7 +12,7 @@ const aboutData = [
 
 const About: React.FC = () => {
   return (
-    <section className="bg-gray-900 dark:text-gray-800 text-white py-20 px-6 md:px-12 relative">
+    <section className="bg-gray-900 dark:text-gray-800 text-white py-10 px-6 md:px-12 relative">
       <div className="absolute -bottom-36 -left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto flex flex-col md:flex-row items-center gap-12">
