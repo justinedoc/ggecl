@@ -48,7 +48,7 @@ const Testimonial = () => {
             .fill("")
             .map((_, i) => (
               <div key={i} className="min-w-[100%] lg:min-w-[25%] px-2">
-                <div className="bg-gray-100 dark:bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col items-start">
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex flex-col items-start">
                   <FaQuoteLeft className="text-gray-500 text-2xl mb-3" />
                   <p className="text-left text-gray-700 dark:text-white">
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit.
