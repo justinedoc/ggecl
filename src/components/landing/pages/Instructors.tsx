@@ -9,6 +9,27 @@ const tempInstructorData = [
     image: "https://via.placeholder.com/150",
     students: 2100,
   },
+  {
+    name: "Ronald Richards",
+    category: "UI/UX Designer",
+    reviews: 4.8,
+    image: "https://via.placeholder.com/150",
+    students: 2100,
+  },
+  {
+    name: "Ronald Richards",
+    category: "UI/UX Designer",
+    reviews: 4.8,
+    image: "https://via.placeholder.com/150",
+    students: 2100,
+  },
+  {
+    name: "Ronald Richards",
+    category: "UI/UX Designer",
+    reviews: 4.8,
+    image: "https://via.placeholder.com/150",
+    students: 2100,
+  },
 ];
 
 function Instructors() {
