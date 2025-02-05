@@ -1,4 +1,5 @@
-import { Link } from "react-router";
+import CategoryBox from "../_components/CategoryBox";
+import ListContainer from "../_components/ListContainer";
 
 const categoriesData = [
   {
@@ -89,33 +90,13 @@ const categoriesData = [
 
 function Categories() {
   return (
-    <section className="md:px-12 px-4 py-10 space-y-10">
-      <header className="w-full flex items-center justify-between">
-        <h1 className="text-2xl font-semibold">Top Categories</h1>
-        <Link to={"/courses"} className="font-light text-blue-500 text-md">
-          See All
-        </Link>
-      </header>
-
-      <main className="flex gap-5 flex-wrap justify-center">
-        {categoriesData.map((category) => (
-          <div
-            key={category.course}
-            className="p-5 flex gap-2 flex-col justify-center items-center border border-blue-300/20 shadow-md md:max-w-[17rem] w-[18rem] rounded-lg hover:-translate-y-1 transition duration-300 ease-in-out cursor-pointer"
-          >
-            <div className="size-20 rounded-full bg-blue-300 inline-flex justify-center items-center">
-              {category.img}
-            </div>
-
-            <h2 className="text-lg font-semibold">{category.course}</h2>
-
-            <p className="text-md font-light text-gray-800 dark:text-gray-200">
-              {category.volume} Courses
-            </p>
-          </div>
-        ))}
-      </main>
-    </section>
+    <ListContainer
+      header="Top Categories"
+      path="/categories"
+      render={categoriesData.map((category) => (
+        <CategoryBox category={category} />
+      ))}
+    />
   );
 }
 

@@ -1,9 +1,59 @@
+import CourseBox from "../_components/CourseBox";
+import ListContainer from "../_components/ListContainer";
+
+const tempCourseData = [
+  {
+    id: 1675818,
+    title: "Beginner’s Guide to Design",
+    instructor: "Ronald Richards",
+    ratings: 1200,
+    duration: "22 Total Hours",
+    lectures: 155,
+    level: "Beginner",
+    price: 149.67,
+  },
+  {
+    id: 1727618,
+    title: "Beginner’s Guide to Design",
+    instructor: "Ronald Richards",
+    ratings: 1200,
+    duration: "22 Total Hours",
+    lectures: 155,
+    level: "Beginner",
+    price: 149.67,
+  },
+  {
+    id: 2772781,
+    title: "Beginner’s Guide to Design",
+    instructor: "Ronald Richards",
+    ratings: 1200,
+    duration: "22 Total Hours",
+    lectures: 155,
+    level: "Beginner",
+    price: 149.67,
+  },
+  {
+    id: 2930783,
+    title: "Beginner’s Guide to Design",
+    instructor: "Ronald Richards",
+    ratings: 1200,
+    duration: "22 Total Hours",
+    lectures: 155,
+    level: "Beginner",
+    price: 149.67,
+  },
+];
+
 function Courses() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return (
+    <ListContainer
+      header="Top courses"
+      path="/courses"
+      render={tempCourseData.map((course) => (
+        <CourseBox course={course} />
+      ))}
+    />
+  );
 }
 
-export default Courses
+export default Courses;

@@ -4,6 +4,7 @@ import sktech from "@/assets/images/sktech.svg";
 import circle2 from "@/assets/images/circle2.png";
 import "./styles.css";
 import { Button } from "@/components/ui/button";
+import { FaArrowRight } from "react-icons/fa";
 
 function Hero() {
   const [counts, setCounts] = useState({
@@ -49,7 +50,7 @@ function Hero() {
   return (
     <div className="relative flex flex-col md:flex-row items-center justify-between px-4 md:px-12 pt-5 pb-36 bg-white dark:bg-gray-900 text-gray-800 dark:text-white w-full">
       <div className="w-full md:w-1/2 text-center md:text-left space-y-5">
-        <div className="absolute -top-10 -left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-16 -left-10 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
 
         <h1 className="font-bold text-[1.7rem] mt-5 md:text-5xl leading-tight md:leading-snug">
           Empower your future with courses designed to
@@ -69,8 +70,8 @@ function Hero() {
           professional goals.
         </p>
 
-        <Button className="btn font-semibold text-md rounded-md text-white">
-          Start your instructure journey
+        <Button className="text-white font-semibold px-5 py-4 rounded-md btn w-fit inline-flex items-center">
+          Start your instructure journey <FaArrowRight />
         </Button>
       </div>
 
@@ -87,7 +88,7 @@ function Hero() {
       </div>
 
       <div className="absolute left-0 md:bottom-2 bottom-4 text-center w-full md:px-6 px-2">
-        <div className="flex  justify-center md:justify-evenly text-center md:text-left bg-gray-50 dark:bg-gray-800 rounded-lg md:px-6 px-1 py-1 shadow-md">
+        <div className="flex  justify-center text-center bg-gray-50 dark:bg-gray-800 rounded-lg md:px-6 px-1 py-1 shadow-md">
           {[
             { label: "Courses", value: counts.courses, suffix: "+" },
             { label: "Students", value: counts.students, suffix: "+" },
@@ -95,7 +96,7 @@ function Hero() {
             { label: "Instructors", value: counts.instructors, suffix: "+" },
           ].map((item, index) => (
             <div key={index} className="w-1/2 md:w-1/4 py-4">
-              <h3 className="md:text-3xl text-md font-bold dark:text-blue-100 text-gray-700">
+              <h3 className="md:text-2xl text-md font-bold dark:text-blue-100 text-gray-700">
                 {item.value}
                 {item.suffix}
               </h3>
