@@ -70,7 +70,7 @@ function Hero() {
           professional goals.
         </p>
 
-        <Button className="text-white font-semibold px-5 py-4 rounded-md btn w-fit inline-flex items-center">
+        <Button className="text-white font-semibold px-5 py-5 rounded-md btn w-fit inline-flex items-center">
           Start your instructure journey <FaArrowRight />
         </Button>
       </div>
