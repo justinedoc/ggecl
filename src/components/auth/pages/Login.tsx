@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Eye, EyeOff, Lock, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { FaGoogle, FaSun, FaMoon } from 'react-icons/fa';
+import { FaGoogle, FaSun, FaMoon, FaArrowRight } from 'react-icons/fa';
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -29,14 +29,12 @@ const Login = () => {
       <div className="absolute top-10 left-20 w-56 h-56 bg-blue-500/20 rounded-full blur-3xl"></div>
       <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-green-400/20 rounded-full blur-2xl"></div>
 
-       {/* Dark Mode Toggle */}
             <button
               onClick={() => setDarkMode(!darkMode)}
               className="absolute md:top-10 top-3 md:right-20 right-5 p-2 rounded-full text-gray-800 dark:text-gray-300 dark:bg-gray-800 bg-gray-200 dark:hover:bg-gray-700"
             >
               {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
             </button>
-            {/* GGECL LOGO for small screen only */}
             <Link to="/" className=' absolute top-5 left-5'>
       <img src="src/assets/images/LOGO.png" className='w-14 h-14 rounded-full p-1 bg-gray-800 md:hidden block' alt="" />
       </Link>
@@ -61,7 +59,7 @@ const Login = () => {
                 </div>
                 <input
                   type="email"
-                  className={`input input-bordered w-full pl-10 py-2 rounded-md dark:bg-gray-100`}
+                  className={`input input-bordered w-full pl-10 py-2 rounded-md dark:bg-gray-800 outline-none`}
                   placeholder="joshdickon@gmail.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -80,7 +78,7 @@ const Login = () => {
                 </div>
                 <input
                   type={showPassword ? 'text' : 'password'}
-                  className={`input input-bordered w-full  py-2 rounded-md pl-10`}
+                  className={`input input-bordered w-full  py-2 rounded-md pl-10 dark:bg-gray-800 outline-none`}
                   placeholder="••••••••"
                   value={formData.password}
                   onChange={(e) => setFormData({ ...formData, password: e.target.value })}
@@ -100,11 +98,11 @@ const Login = () => {
               </div>
             </div>
 
-            <button type="submit" className="btn btn-primary w-full mt-4 py-2 rounded-md text-white">
-              Login
+            <button type="submit" className="btn btn-primary mt-4 py-2 px-4 w-max rounded-md text-white flex gap-2 items-center">
+             <span> Login</span> <FaArrowRight />
             </button>
           </form>
-
+<hr />
           <div className="mt-6 flex justify-center space-x-4 w-full">
           <button 
   className="btn btn-outline btn-google flex items-center justify-center space-x-2 w-full mt-2 py-2 rounded-md text-white"
