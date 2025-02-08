@@ -71,7 +71,7 @@ function Hero() {
         </p>
 
         <Button className="text-white font-semibold px-5 py-5 rounded-md btn w-fit inline-flex items-center">
-          Start your instructure journey <FaArrowRight />
+          Start your student journey <FaArrowRight />
         </Button>
       </div>
 

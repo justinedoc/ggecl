@@ -79,20 +79,44 @@ const AllCourses = () => {
                 className="bg-gray-100 dark:bg-gray-800 px-5 mt-5 py-2 rounded-lg w-full outline-none"
               >
                 <option selected>Munber of Chapter</option>
-                <option value="5"><input type="checkbox" name="" id="one" /> <label htmlFor="one">1-10</label></option>
-                <option value="4"><input type="checkbox" name="" id="one" /> <label htmlFor="one">10-15</label></option>
-                <option value="3"><input type="checkbox" name="" id="one" /> <label htmlFor="one">15-20</label></option>
-                <option value="2"><input type="checkbox" name="" id="one" /> <label htmlFor="one">20-25</label></option>
+                <option value="5">
+                  <input type="checkbox" name="" id="one" />{" "}
+                  <label htmlFor="one">1-10</label>
+                </option>
+                <option value="4">
+                  <input type="checkbox" name="" id="one" />{" "}
+                  <label htmlFor="one">10-15</label>
+                </option>
+                <option value="3">
+                  <input type="checkbox" name="" id="one" />{" "}
+                  <label htmlFor="one">15-20</label>
+                </option>
+                <option value="2">
+                  <input type="checkbox" name="" id="one" />{" "}
+                  <label htmlFor="one">20-25</label>
+                </option>
               </select>
               <select
                 name="ratings"
                 className="bg-gray-100 dark:bg-gray-800 px-5 mt-5 py-2 rounded-lg w-full outline-none"
               >
                 <option selected>Price</option>
-                <option value="5"><input type="checkbox" name="" id="one" /> <label htmlFor="one">$100</label></option>
-                <option value="4"><input type="checkbox" name="" id="one" /> <label htmlFor="one">$150</label></option>
-                <option value="3"><input type="checkbox" name="" id="one" /> <label htmlFor="one">$200</label></option>
-                <option value="2"><input type="checkbox" name="" id="one" /> <label htmlFor="one">$250</label></option>
+                <option value="5">
+                  <input type="checkbox" name="" id="one" />{" "}
+                  <label htmlFor="one">$100</label>
+                </option>
+                <option value="4">
+                  <input type="checkbox" name="" id="one" />{" "}
+                  <label htmlFor="one">$150</label>
+                </option>
+                <option value="3">
+                  <input type="checkbox" name="" id="one" />{" "}
+                  <label htmlFor="one">$200</label>
+                </option>
+                <option value="2">
+                  <input type="checkbox" name="" id="one" />{" "}
+                  <label htmlFor="one">$250</label>
+                </option>
               </select>
               <select
                 name="ratings"

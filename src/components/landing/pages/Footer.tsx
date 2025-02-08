@@ -1,104 +1,60 @@
-import React from "react";
-import { FaInstagram, FaFacebook, FaWhatsapp } from "react-icons/fa";
+import { footerNavs } from "../constants/FooterNavs";
+import { socialNavs } from "../constants/SocialNavs";
 
-const Footer: React.FC = () => {
+function Footer() {
   return (
-    <footer className=" text-white dark:border-t border-blue-300/20 py-10 px-4 sm:px-6 md:px-16 bg-gray-900">
-      <div className="container w-full mx-auto grid grid-cols-1 md:grid-cols-2 md:gap-20">
-        <div className="flex flex-col items-start md:mb-6 mb-2">
-          <div className="mb-4">
-            <img src="src/assets/images/LOGO.png" alt="Logo" className="w-20" />
-          </div>
-          <p className="text-md text-left">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. In,
-            reiciendis? Lorem ipsum dolor, sit amet consectetur adipisicing
-            elit. Saepe, dolore! Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Eligendi deleniti eos eveniet corporis
-          </p>
-        </div>
+    <footer className="w-full p-5 gap-10 md:gap-0 md:p-12 grid grid-cols-1 md:grid-cols-4 text-white dark:border-t border-blue-300/20 py-10 px-4 sm:px-6 md:px-16 bg-gray-900">
+      <main className="flex flex-col md:min-h-[15rem] col-span-1">
+        <img
+          src="src/assets/images/LOGO.png"
+          alt="logo"
+          loading="lazy"
+          width={55}
+        />
+        <p className="font-light mb-5 my-3">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. In,
+          reiciendis? Lorem ipsum dolor, sit amet consectetur adipisicing
+        </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Company</h3>
-            <ul>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-400">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-400">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-400">
-                  Blog
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Support</h3>
-            <ul>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-400">
-                  Help Center
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-400">
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-400">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-400">
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-400">
-                  Privacy Policy
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-3">Resources</h3>
-            <ul>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-400">
-                  Documentation
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-400">
-                  API
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm hover:text-gray-400">
-                  Facebook
-                </a>
-              </li>
-            </ul>
-            <div className="iop">
-              <div className="mt-8 flex items-start gap-6">
-                <FaInstagram className=" hover:text-gray-400 bg-gray-800 p-2 rounded-full text-4xl" />
-                <FaFacebook className=" hover:text-gray-400 bg-gray-800 p-2 rounded-full text-4xl" />
-                <FaWhatsapp className=" hover:text-gray-400 bg-gray-800 p-2 rounded-full text-4xl" />
-              </div>
-            </div>
-          </div>
+        <div className="flex gap-5 items-center mt-auto">
+          {socialNavs.map((link) => (
+            <a
+              key={link.name}
+              href={link.url}
+              className={`text-[#808080] transition-all hover:text-blue-300/20`}
+            >
+              {link.icon}
+            </a>
+          ))}
         </div>
-      </div>
+      </main>
+
+      <nav className="col-span-3 font-light text-gray-300 text-md">
+        <main className="w-full flex flex-col md:flex-row flex-shrink-0 md:justify-end gap-5 md:gap-16 justify-between items-start">
+          {footerNavs.map((group, i) => (
+            <table key={i}>
+              <tbody>
+                <tr>
+                  <th className={`text-white font-semibold text-left pb-5`}>
+                    {group[0]?.category}
+                  </th>
+                </tr>
+                <tr>
+                  <td className="flex flex-col gap-5">
+                    {group.map((footer) => (
+                      <a key={footer.text} href={footer.href}>
+                        {footer.text}
+                      </a>
+                    ))}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          ))}
+        </main>
+      </nav>
     </footer>
   );
-};
+}
 
 export default Footer;
