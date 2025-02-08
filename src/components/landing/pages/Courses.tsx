@@ -26,7 +26,7 @@ const tempCourseData = [
     id: 2772781,
     title: "Beginner’s Guide to Design",
     instructor: "Ronald Richards",
-    ratings: 1200,
+    ratings: 100,
     duration: "22 Total Hours",
     lectures: 155,
     level: "Beginner",
