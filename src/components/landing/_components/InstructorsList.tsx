@@ -1,8 +1,9 @@
-import InstructorBox from "../_components/InstructorBox";
-import ListContainer from "../_components/ListContainer";
+import InstructorBox from "./InstructorBox";
+import ListContainer from "../../ui/ListContainer";
 
 const tempInstructorData = [
   {
+    id: 183782,
     name: "Ronald Richards",
     category: "UI/UX Designer",
     reviews: 4.8,
@@ -10,6 +11,7 @@ const tempInstructorData = [
     students: 2100,
   },
   {
+    id: 72620,
     name: "Ronald Richards",
     category: "UI/UX Designer",
     reviews: 4.8,
@@ -17,6 +19,7 @@ const tempInstructorData = [
     students: 2100,
   },
   {
+    id: 1727671,
     name: "Ronald Richards",
     category: "UI/UX Designer",
     reviews: 4.8,
@@ -24,6 +27,7 @@ const tempInstructorData = [
     students: 2100,
   },
   {
+    id: 268182,
     name: "Ronald Richards",
     category: "UI/UX Designer",
     reviews: 4.8,
@@ -38,7 +42,7 @@ function Instructors() {
       header="Top Instructors"
       path="/instructors"
       render={tempInstructorData.map((instructor) => (
-        <InstructorBox instructor={instructor} />
+        <InstructorBox key={instructor.id} instructor={instructor} />
       ))}
     />
   );

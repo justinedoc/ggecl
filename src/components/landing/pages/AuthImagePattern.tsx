@@ -1,4 +1,4 @@
-import "../pages/style.css";
+import "./styles/styles.css";
 
 const AuthImagePattern = ({
   title,

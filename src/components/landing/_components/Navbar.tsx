@@ -18,7 +18,7 @@ export const links: NavLink[] = [
   { title: "Contact", path: "/contact" },
 ];
 
-const Navbar: React.FC = () => {
+const Navbar = ({ showNav }: { showNav?: boolean }) => {
   const [darkMode, setDarkMode] = useState<boolean>(
     localStorage.getItem("theme") === "dark"
   );
@@ -50,19 +50,21 @@ const Navbar: React.FC = () => {
             <img src={logoSrc} alt="Logo" width={55} />
           </Link>
 
-          <SearchBar />
-
-          {/* <div className="hidden md:flex space-x-6">
-            {links.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className="text-gray-700 dark:text-gray-300 hover:text-blue-500 transition-colors duration-150 font-bold"
-              >
-                {link.title}
-              </Link>
-            ))}
-          </div> */}
+          {!showNav ? (
+            <SearchBar />
+          ) : (
+            <div className="hidden md:flex space-x-6">
+              {links.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className="text-gray-700 dark:text-gray-300 hover:text-blue-500 transition-colors duration-150 font-bold"
+                >
+                  {link.title}
+                </Link>
+              ))}
+            </div>
+          )}
 
           {/* Actions */}
           <div className="flex items-center space-x-4">

@@ -8,10 +8,7 @@ interface CategoriesType {
 
 function CategoryBox({ category }: CategoriesType) {
   return (
-    <div
-      key={category.course}
-      className="p-5 flex gap-2 flex-col justify-center items-center border border-blue-300/20 shadow-md md:max-w-[17rem] w-[18rem] rounded-lg hover:-translate-y-1 transition duration-300 ease-in-out cursor-pointer"
-    >
+    <div className="p-5 flex gap-2 flex-col justify-center items-center border border-blue-300/20 shadow-md md:max-w-[17rem] w-[18rem] rounded-lg hover:-translate-y-1 transition duration-300 ease-in-out cursor-pointer">
       <div className="size-20 rounded-full bg-blue-300 inline-flex justify-center items-center">
         {category.img}
       </div>
