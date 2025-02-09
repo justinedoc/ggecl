@@ -1,11 +1,19 @@
 import Navbar from "../_components/Navbar";
-import { FaFilter } from "react-icons/fa";
+import { FaFilter, FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { tempCourseData } from "../_components/CoursesList";
 import SearchBar from "../../ui/SearchBar";
 import CourseBox from "../_components/CourseBox";
 import Footer from "./Footer";
+import { useState } from "react";
 
 const Courses = () => {
+  const [openAccordion, setOpenAccordion] = useState<number | null>(null);
+
+  const toggleAccordion = (index: number) => {
+    setOpenAccordion(openAccordion === index ? null : index);
+  };
+  
+
   return (
     <>
       <div className="bg-white text-gray-800 dark:text-gray-100 dark:bg-gray-900">
@@ -13,10 +21,7 @@ const Courses = () => {
 
         <main className="md:py-5 md:px-10 px-5 py-2">
           <header className="flex justify-between items-center my-7">
-            <h1 className="sect md:text-3xl text-2xl mb-5 font-bold">
-              Explore Courses
-            </h1>
-
+            <h1 className="sect md:text-3xl text-2xl mb-5 font-bold">Explore Courses</h1>
             <SearchBar />
           </header>
 
@@ -28,73 +33,62 @@ const Courses = () => {
                 <FaFilter />
                 <span className="-mt-1">Filter</span>
               </button>
-              <div className="ratings">
-                <select
-                  name="ratings"
-                  className="bg-gray-100 dark:bg-gray-800 px-5 mt-5 py-2 rounded-lg w-full outline-none"
-                >
-                  <option selected>Choose Ratings</option>
-                  <option value="5">⭐⭐⭐⭐⭐</option>
-                  <option value="4">⭐⭐⭐⭐</option>
-                  <option value="3">⭐⭐⭐</option>
-                  <option value="2">⭐⭐</option>
-                  <option value="1">⭐</option>
-                </select>
-                <select
-                  name="ratings"
-                  className="bg-gray-100 dark:bg-gray-800 px-5 mt-5 py-2 rounded-lg w-full outline-none"
-                >
-                  <option selected>Munber of Chapter</option>
-                  <option value="5">
-                    <input type="checkbox" name="" id="one" />{" "}
-                    <label htmlFor="one">1-10</label>
-                  </option>
-                  <option value="4">
-                    <input type="checkbox" name="" id="one" />{" "}
-                    <label htmlFor="one">10-15</label>
-                  </option>
-                  <option value="3">
-                    <input type="checkbox" name="" id="one" />{" "}
-                    <label htmlFor="one">15-20</label>
-                  </option>
-                  <option value="2">
-                    <input type="checkbox" name="" id="one" />{" "}
-                    <label htmlFor="one">20-25</label>
-                  </option>
-                </select>
-                <select
-                  name="ratings"
-                  className="bg-gray-100 dark:bg-gray-800 px-5 mt-5 py-2 rounded-lg w-full outline-none"
-                >
-                  <option selected>Price</option>
-                  <option value="5">
-                    <input type="checkbox" name="" id="one" />{" "}
-                    <label htmlFor="one">$100</label>
-                  </option>
-                  <option value="4">
-                    <input type="checkbox" name="" id="one" />{" "}
-                    <label htmlFor="one">$150</label>
-                  </option>
-                  <option value="3">
-                    <input type="checkbox" name="" id="one" />{" "}
-                    <label htmlFor="one">$200</label>
-                  </option>
-                  <option value="2">
-                    <input type="checkbox" name="" id="one" />{" "}
-                    <label htmlFor="one">$250</label>
-                  </option>
-                </select>
-                <select
-                  name="ratings"
-                  className="bg-gray-100 dark:bg-gray-800 px-5 mt-5 py-2 rounded-lg w-full outline-none"
-                >
-                  <option selected>Category</option>
-                  <option value="5">Web Development</option>
-                  <option value="4">App Developmet</option>
-                  <option value="3">UI?/UX Designer</option>
-                  <option value="2">Data Analysis</option>
-                  <option value="1">Cyber Security</option>
-                </select>
+              
+              <div className="ratings mt-5">
+                {["Choose Ratings", "Number of Chapters", "Price", "Category"].map((title, index) => (
+                  <div key={index} className="border-b border-gray-700 py-2">
+                    <button 
+                      className="flex justify-between items-center w-full text-left py-2" 
+                      onClick={() => toggleAccordion(index)}
+                    >
+                      {title}
+                      {openAccordion === index ? <FaChevronUp /> : <FaChevronDown />}
+                    </button>
+                    {openAccordion === index && (
+                      <div className="mt-2 px-2">
+                        {index === 0 && (
+                          <>
+                            <label className="block">⭐⭐⭐⭐⭐</label>
+                            <label className="block">⭐⭐⭐⭐</label>
+                            <label className="block">⭐⭐⭐</label>
+                            <label className="block">⭐⭐</label>
+                            <label className="block">⭐</label>
+                          </>
+                        )}
+                        {index === 1 && (
+                          <>
+                            <label className="block"><input type="checkbox" /> 1-10</label>
+                            <label className="block"><input type="checkbox" /> 10-15</label>
+                            <label className="block"><input type="checkbox" /> 1-10</label>
+                            <label className="block"><input type="checkbox" /> 10-15</label>
+                            <label className="block"><input type="checkbox" /> 1-10</label>
+                            <label className="block"><input type="checkbox" /> 10-15</label>
+                          </>
+                        )}
+                        {index === 2 && (
+                          <>
+                            <label className="block"><input type="checkbox" /> $100</label>
+                            <label className="block"><input type="checkbox" /> $150</label>
+                            <label className="block"><input type="checkbox" /> $100</label>
+                            <label className="block"><input type="checkbox" /> $150</label>
+                            <label className="block"><input type="checkbox" /> $100</label>
+                            <label className="block"><input type="checkbox" /> $150</label>
+                          </>
+                        )}
+                        {index === 3 && (
+                          <>
+                            <label className="block">Web Development</label>
+                            <label className="block">App Development</label>
+                            <label className="block">Web Development</label>
+                            <label className="block">App Development</label>
+                            <label className="block">Web Development</label>
+                            <label className="block">App Development</label>
+                          </>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
 
