@@ -1,18 +1,21 @@
 import Navbar from "../_components/Navbar";
-import { FaFilter, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { tempCourseData } from "../_components/CoursesList";
 import SearchBar from "../../ui/SearchBar";
-import CourseBox from "../_components/CourseBox";
+import CourseBox, { Star } from "../_components/CourseBox";
 import Footer from "./Footer";
 import { useState } from "react";
+import { Filter } from "lucide-react";
+import { tempInstructorData } from "../_components/InstructorsList";
+import ListContainer from "@/components/ui/ListContainer";
+import InstructorBox from "../_components/InstructorBox";
 
 const Courses = () => {
-  const [openAccordion, setOpenAccordion] = useState<number | null>(null);
+  const [openAccordion, setOpenAccordion] = useState<number>(0);
 
   const toggleAccordion = (index: number) => {
-    setOpenAccordion(openAccordion === index ? null : index);
+    setOpenAccordion(openAccordion === index ? 0 : index);
   };
-  
 
   return (
     <>
@@ -20,8 +23,8 @@ const Courses = () => {
         <Navbar showNav />
 
         <main className="md:py-5 md:px-10 px-5 py-2">
-          <header className="flex justify-between items-center my-7">
-            <h1 className="sect md:text-3xl text-2xl mb-5 font-bold">Explore Courses</h1>
+          <header className="flex justify-between items-center my-5">
+            <h1 className="md:text-3xl text-2xl font-bold">Explore Courses</h1>
             <SearchBar />
           </header>
 
@@ -29,66 +32,104 @@ const Courses = () => {
           <div className="grid grid-cols-12 gap-8 my-5">
             {/* Filter Section */}
             <div className="col-span-3">
-              <button className="flex items-center gap-4 border border-gray-700 rounded-lg px-4 py-2 w-max">
-                <FaFilter />
-                <span className="-mt-1">Filter</span>
+              <button className="flex items-center gap-1 border border-gray-700 rounded-lg px-3 py-[0.45rem]">
+                <Filter size={18} />
+                <span className="font-semibold">Filter</span>
               </button>
-              
-              <div className="ratings mt-5">
-                {["Choose Ratings", "Number of Chapters", "Price", "Category"].map((title, index) => (
-                  <div key={index} className="border-b border-gray-700 py-2">
-                    <button 
-                      className="flex justify-between items-center w-full text-left py-2" 
-                      onClick={() => toggleAccordion(index)}
+
+              <div className="mt-5">
+                {["Rating", "Number of Chapters", "Price", "Category"].map(
+                  (title, index) => (
+                    <div
+                      key={index}
+                      className="border-b border-gray-500/40 py-1"
                     >
-                      {title}
-                      {openAccordion === index ? <FaChevronUp /> : <FaChevronDown />}
-                    </button>
-                    {openAccordion === index && (
-                      <div className="mt-2 px-2">
-                        {index === 0 && (
-                          <>
-                            <label className="block">⭐⭐⭐⭐⭐</label>
-                            <label className="block">⭐⭐⭐⭐</label>
-                            <label className="block">⭐⭐⭐</label>
-                            <label className="block">⭐⭐</label>
-                            <label className="block">⭐</label>
-                          </>
+                      <button
+                        className="flex justify-between items-center w-full text-left py-2"
+                        onClick={() => toggleAccordion(index)}
+                      >
+                        {title}
+                        {openAccordion === index ? (
+                          <FaChevronUp size={13} />
+                        ) : (
+                          <FaChevronDown size={13} />
                         )}
-                        {index === 1 && (
-                          <>
-                            <label className="block"><input type="checkbox" /> 1-10</label>
-                            <label className="block"><input type="checkbox" /> 10-15</label>
-                            <label className="block"><input type="checkbox" /> 1-10</label>
-                            <label className="block"><input type="checkbox" /> 10-15</label>
-                            <label className="block"><input type="checkbox" /> 1-10</label>
-                            <label className="block"><input type="checkbox" /> 10-15</label>
-                          </>
-                        )}
-                        {index === 2 && (
-                          <>
-                            <label className="block"><input type="checkbox" /> $100</label>
-                            <label className="block"><input type="checkbox" /> $150</label>
-                            <label className="block"><input type="checkbox" /> $100</label>
-                            <label className="block"><input type="checkbox" /> $150</label>
-                            <label className="block"><input type="checkbox" /> $100</label>
-                            <label className="block"><input type="checkbox" /> $150</label>
-                          </>
-                        )}
-                        {index === 3 && (
-                          <>
-                            <label className="block">Web Development</label>
-                            <label className="block">App Development</label>
-                            <label className="block">Web Development</label>
-                            <label className="block">App Development</label>
-                            <label className="block">Web Development</label>
-                            <label className="block">App Development</label>
-                          </>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                ))}
+                      </button>
+                      {openAccordion === index && (
+                        <div className="flex flex-col-reverse">
+                          {index === 0 && (
+                            <>
+                              {Array.from({ length: 5 }).map((_, i) => (
+                                <div key={i} className="flex gap-1 mt-2">
+                                  {Array.from({ length: 5 }).map((_, j) => (
+                                    <Star
+                                      className="size-6"
+                                      full={j + 1 <= i + 1}
+                                    />
+                                  ))}
+                                </div>
+                              ))}
+                            </>
+                          )}
+                          {index === 1 && (
+                            <>
+                              <label className="block">
+                                <input type="checkbox" /> 1-10
+                              </label>
+                              <label className="block">
+                                <input type="checkbox" /> 10-15
+                              </label>
+                              <label className="block">
+                                <input type="checkbox" /> 1-10
+                              </label>
+                              <label className="block">
+                                <input type="checkbox" /> 10-15
+                              </label>
+                              <label className="block">
+                                <input type="checkbox" /> 1-10
+                              </label>
+                              <label className="block">
+                                <input type="checkbox" /> 10-15
+                              </label>
+                            </>
+                          )}
+                          {index === 2 && (
+                            <>
+                              <label className="block">
+                                <input type="checkbox" /> $100
+                              </label>
+                              <label className="block">
+                                <input type="checkbox" /> $150
+                              </label>
+                              <label className="block">
+                                <input type="checkbox" /> $100
+                              </label>
+                              <label className="block">
+                                <input type="checkbox" /> $150
+                              </label>
+                              <label className="block">
+                                <input type="checkbox" /> $100
+                              </label>
+                              <label className="block">
+                                <input type="checkbox" /> $150
+                              </label>
+                            </>
+                          )}
+                          {index === 3 && (
+                            <>
+                              <label className="block">Web Development</label>
+                              <label className="block">App Development</label>
+                              <label className="block">Web Development</label>
+                              <label className="block">App Development</label>
+                              <label className="block">Web Development</label>
+                              <label className="block">App Development</label>
+                            </>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )
+                )}
               </div>
             </div>
 
@@ -101,6 +142,20 @@ const Courses = () => {
           </div>
         </main>
       </div>
+      <ListContainer
+        header="Popular Mentors"
+        path="/instructors"
+        render={tempInstructorData.map((instructor) => (
+          <InstructorBox key={instructor.id} instructor={instructor} />
+        ))}
+      />
+      <ListContainer
+        header="Featured Courses"
+        path="/courses"
+        render={tempCourseData.map((course) => (
+          <CourseBox key={course.id} course={course} />
+        ))}
+      />
       <Footer />
     </>
   );

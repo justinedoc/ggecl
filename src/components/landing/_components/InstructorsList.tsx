@@ -1,7 +1,7 @@
 import InstructorBox from "./InstructorBox";
 import ListContainer from "../../ui/ListContainer";
 
-const tempInstructorData = [
+export const tempInstructorData = [
   {
     id: 183782,
     name: "Ronald Richards",

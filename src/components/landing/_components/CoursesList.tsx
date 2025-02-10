@@ -11,6 +11,7 @@ export const tempCourseData = [
     lectures: 155,
     level: "Beginner",
     price: 149.67,
+    stars: 5,
   },
   {
     id: 1727618,
@@ -21,6 +22,7 @@ export const tempCourseData = [
     lectures: 155,
     level: "Beginner",
     price: 149.67,
+    stars: 4,
   },
   {
     id: 2772781,
@@ -31,6 +33,7 @@ export const tempCourseData = [
     lectures: 155,
     level: "Beginner",
     price: 149.67,
+    stars: 1,
   },
   {
     id: 2930783,
@@ -41,6 +44,7 @@ export const tempCourseData = [
     lectures: 155,
     level: "Beginner",
     price: 149.67,
+    stars: 0,
   },
 ];
 
