@@ -17,7 +17,7 @@ const About: React.FC = () => {
 
       <div className="container mx-auto flex flex-col md:flex-row items-center gap-12">
         <div className="md:w-1/2 space-y-6">
-          <h2 className="w-full text-center md:text-left text-3xl font-bold text-gray-200">
+          <h2 className="w-full text-left text-3xl font-bold text-gray-200">
             About GGECL LMS
           </h2>
           <p className="text-md md:text-lg text-gray-300 font-medium">

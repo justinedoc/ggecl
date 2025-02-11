@@ -29,7 +29,7 @@ const Courses = () => {
           </header>
 
           {/* Main Content Grid */}
-          <div className="grid grid-cols-12 gap-8 my-5">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 my-5">
             {/* Filter Section */}
             <div className="col-span-3">
               <button className="flex items-center gap-1 border border-gray-700 rounded-lg px-3 py-[0.45rem]">
@@ -37,7 +37,7 @@ const Courses = () => {
                 <span className="font-semibold">Filter</span>
               </button>
 
-              <div className="mt-5">
+              <div className="mt-5 md:w-full w-[23rem]">
                 {["Rating", "Number of Chapters", "Price", "Category"].map(
                   (title, index) => (
                     <div
