@@ -57,7 +57,7 @@ function Cart() {
           {tempCourseData.map((course) => (
             <div
               key={course.id}
-              className="flex flex-col md:flex-row gap-4 border p-4 rounded-md dark:border-gray-700 dark:bg-gray-800"
+              className="flex flex-col md:flex-row gap-2 md:gap-4 border p-4 rounded-md dark:border-gray-700 dark:bg-gray-800"
             >
               {/* Course Image */}
               <div className="w-full md:w-44 md:h-24 overflow-hidden rounded-md">
@@ -70,14 +70,14 @@ function Cart() {
 
               {/* Course Details */}
               <div className="flex-1">
-                <h2 className="text-xl font-semibold text-gray-800 dark:text-white">
+                <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                   {course.title}
                 </h2>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                <p className="my-1 text-sm text-gray-500 dark:text-gray-400">
                   By {course.instructor}
                 </p>
 
-                <div className="mt-2 flex flex-col md:flex-row md:items-center md:h-[3vh] md:space-x-3">
+                <div className="flex flex-col md:flex-row md:items-center md:h-[3vh] md:space-x-3">
                   <DisplayRating rating={course.ratings} stars={course.stars} />
                   <Separator
                     orientation="vertical"
@@ -88,6 +88,11 @@ function Cart() {
                     <span>{course.lectures} Lectures</span>
                     <span>{course.level}</span>
                   </p>
+                </div>
+                <div className="flex mt-2 text-sm space-x-3 h-[3vh]">
+                  <span className="text-blue-500 dark:text-blue-400">Save for later</span>
+                  <Separator orientation="vertical" />
+                  <span className="text-red-500 dark:text-red-400">Remove</span>
                 </div>
               </div>
 
