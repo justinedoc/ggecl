@@ -23,13 +23,13 @@ const Courses = () => {
         <Navbar showNav />
 
         <main className="md:py-5 md:px-10 px-5 py-2">
-          <header className="flex justify-between items-center my-5">
+          <header className="flex flex-col md:flex-row justify-between md:items-center space-y-3 md:space-y-0 my-5">
             <h1 className="md:text-3xl text-2xl font-bold">Explore Courses</h1>
-            <SearchBar />
+            <SearchBar show />
           </header>
 
           {/* Main Content Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 my-5">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 my-8">
             {/* Filter Section */}
             <div className="col-span-3">
               <button className="flex items-center gap-1 border border-gray-700 rounded-lg px-3 py-[0.45rem]">
@@ -37,12 +37,12 @@ const Courses = () => {
                 <span className="font-semibold">Filter</span>
               </button>
 
-              <div className="mt-5 md:w-full w-[23rem]">
+              <div className="mt-5 md:w-full w-[20rem]">
                 {["Rating", "Number of Chapters", "Price", "Category"].map(
                   (title, index) => (
                     <div
                       key={index}
-                      className="border-b border-gray-500/40 py-1"
+                      className="border-b border-gray-500/40 py-1 w-full"
                     >
                       <button
                         className="flex justify-between items-center w-full text-left py-2"
@@ -72,7 +72,7 @@ const Courses = () => {
                             </>
                           )}
                           {index === 1 && (
-                            <>
+                            <div className="space-y-2">
                               <label className="block">
                                 <input type="checkbox" /> 1-10
                               </label>
@@ -91,10 +91,10 @@ const Courses = () => {
                               <label className="block">
                                 <input type="checkbox" /> 10-15
                               </label>
-                            </>
+                            </div>
                           )}
                           {index === 2 && (
-                            <>
+                            <div className="space-y-2">
                               <label className="block">
                                 <input type="checkbox" /> $100
                               </label>
@@ -113,17 +113,17 @@ const Courses = () => {
                               <label className="block">
                                 <input type="checkbox" /> $150
                               </label>
-                            </>
+                            </div>
                           )}
                           {index === 3 && (
-                            <>
+                            <div className="space-y-2 text-gray-500">
                               <label className="block">Web Development</label>
                               <label className="block">App Development</label>
                               <label className="block">Web Development</label>
                               <label className="block">App Development</label>
                               <label className="block">Web Development</label>
                               <label className="block">App Development</label>
-                            </>
+                            </div>
                           )}
                         </div>
                       )}
