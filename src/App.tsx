@@ -5,6 +5,7 @@ import Courses from "./components/landing/pages/Courses";
 import Cart from "./components/landing/pages/Cart";
 import Layout from "./components/landing/Layout";
 import Home from "./components/landing/pages/Home";
+import Instructor from "./components/landing/pages/Instructor";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
       </Route>
       <Route path="/courses" element={<Courses />} />
+      <Route path="/instructor" element={<Instructor />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="*" element={<h1>Not found</h1>} />
