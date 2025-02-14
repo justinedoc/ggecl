@@ -5,6 +5,7 @@ import { CourseType } from "./CourseBox";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { generateInitials } from "@/lib/generateInitial";
 
 const tabs = ["All", "Description", "Instructor", "Syllabus", "Reviews"];
 
@@ -227,7 +228,9 @@ const StudentReviews: React.FC<{
             <div className="flex gap-4">
               <Avatar className="object-cover">
                 <AvatarImage src={review.image} />
-                <AvatarFallback>CN</AvatarFallback>
+                <AvatarFallback>
+                  {generateInitials(review.reviewer)}
+                </AvatarFallback>
               </Avatar>
               <p className="font-bold">{review.reviewer}</p>
             </div>
