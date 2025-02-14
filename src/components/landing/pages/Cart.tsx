@@ -24,7 +24,7 @@ function Cart() {
     <section className="px-4 py-10 md:px-8 md:py-12 w-full grid grid-cols-1 lg:grid-cols-3 dark:bg-gray-900">
       {/* Cart Section */}
       <main className="col-span-2">
-        <header className="flex flex-col md:flex-row gap-2 md:gap-10 mb-5 items-baseline">
+        <header className="flex flex-col md:flex-row gap-2 md:gap-10 mb-7 items-baseline">
           <h1 className="text-3xl font-semibold text-gray-900 dark:text-white">
             Shopping Cart
           </h1>
@@ -74,11 +74,14 @@ function Cart() {
                   {course.title}
                 </h2>
                 <p className="my-1 text-sm text-gray-500 dark:text-gray-400">
-                  By {course.instructor}
+                  By {course.instructor.name}
                 </p>
 
                 <div className="flex flex-col md:flex-row md:items-center md:h-[3vh] md:space-x-3">
-                  <DisplayRating rating={course.ratings} stars={course.stars} />
+                  <DisplayRating
+                    rating={course.totalRating}
+                    stars={course.totalStar}
+                  />
                   <Separator
                     orientation="vertical"
                     className="hidden md:block dark:bg-gray-600"
@@ -90,9 +93,13 @@ function Cart() {
                   </p>
                 </div>
                 <div className="flex mt-2 text-sm space-x-3 h-[3vh]">
-                  <span className="text-blue-500 dark:text-blue-400">Save for later</span>
+                  <span className="text-blue-500 dark:text-blue-400 cursor-pointer">
+                    Save for later
+                  </span>
                   <Separator orientation="vertical" />
-                  <span className="text-red-500 dark:text-red-400">Remove</span>
+                  <span className="text-red-500 dark:text-red-400 cursor-pointer">
+                    Remove
+                  </span>
                 </div>
               </div>
 

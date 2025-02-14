@@ -5,6 +5,7 @@ import Courses from "./components/landing/pages/Courses";
 import Cart from "./components/landing/pages/Cart";
 import Layout from "./components/landing/Layout";
 import Home from "./components/landing/pages/Home";
+import CoursesPage from "./components/landing/pages/CoursePage";
 
 function App() {
   return (
@@ -12,10 +13,11 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/courses/:id" element={<CoursesPage />} />
       </Route>
       <Route path="/courses" element={<Courses />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
       <Route path="*" element={<h1>Not found</h1>} />
     </Routes>
   );

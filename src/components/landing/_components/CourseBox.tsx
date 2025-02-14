@@ -10,14 +10,34 @@ import { StarIcon, ShoppingCart } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router";
 
-interface CourseType {
+export interface CourseType {
   course: {
     id: number;
     title: string;
-    instructor: string;
-    ratings: number;
-    stars: number;
+    instructor: {
+      name: string;
+      role: string;
+      image: string;
+      reviews: number;
+      students: number;
+      courses: number;
+      bio: string;
+    };
+    description: string;
+    certification: string;
+    syllabus: any[];
+    reviews: {
+      rating: number;
+      reviewer: string;
+      date: string;
+      comment: string;
+      image: string;
+      stars: number;
+    }[];
+    totalRating: number;
+    totalStar: number;
     duration: string;
     lectures: number;
     level: string;
@@ -28,8 +48,16 @@ interface CourseType {
 }
 
 function CourseBox({ course }: CourseType) {
+  const navigate = useNavigate();
+
+  function handleNavigation(id: number) {
+    navigate(`/courses/${id}`);
+  }
   return (
-    <Card className="md:max-w-[15rem] xl:max-w-[17rem] py-2 shadow-sm dark:bg-gray-900 dark:border-gray-800">
+    <Card
+      className="md:max-w-[15rem] xl:max-w-[17rem] py-2 shadow-sm dark:bg-gray-900 dark:border-gray-800 cursor-pointer"
+      onClick={() => handleNavigation(course.id)}
+    >
       <CardHeader className="py-1 px-3 space-y-1 relative">
         {course?.badge && (
           <Badge className="absolute top-0 w-fit mb-1">{course.badge}</Badge>
@@ -45,11 +73,14 @@ function CourseBox({ course }: CourseType) {
           {course.title}
         </CardTitle>
         <CardDescription className="text-gray-600 dark:text-gray-400">
-          By {course.instructor}
+          By {course.instructor.name}
         </CardDescription>
       </CardHeader>
       <CardContent className="py-0 px-3 space-y-1">
-        <DisplayRating rating={course.ratings} stars={course.stars} />
+        <DisplayRating
+          rating={course.totalRating}
+          stars={course.totalStar}
+        />
         <p className="text-sm dark:text-gray-400 text-gray-600">
           <span>{course.duration}</span> •{" "}
           <span>{course.lectures} Lectures</span> • <span>{course.level}</span>
