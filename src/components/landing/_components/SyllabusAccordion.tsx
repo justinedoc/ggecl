@@ -16,7 +16,7 @@ const syllabusData: SyllabusItem[] = [
   {
     title: "Introduction to UX Design",
     topics: ["What is UX?", "History of UX", "UX vs UI", "Importance of UX"],
-    time: "1 hour",
+    time: "1 Hour",
   },
   {
     title: "User Research",
@@ -26,7 +26,7 @@ const syllabusData: SyllabusItem[] = [
       "User Personas",
       "Competitor Analysis",
     ],
-    time: "1 hour",
+    time: "1 Hour",
   },
   {
     title: "Prototyping & Wireframing",
@@ -36,7 +36,7 @@ const syllabusData: SyllabusItem[] = [
       "Usability Testing",
       "Iterative Design",
     ],
-    time: "1 hour",
+    time: "1 Hour",
   },
   {
     title: "Advanced UX Strategies",
@@ -46,7 +46,7 @@ const syllabusData: SyllabusItem[] = [
       "Emotional Design",
       "Future of UX",
     ],
-    time: "1 hour",
+    time: "1 Hour",
   },
 ];
 
@@ -70,7 +70,7 @@ const SyllabusAccordion: React.FC = () => {
                   <p className="flex h-[3vh] items-center gap-2 font-semibold text-gray-500 text-sm">
                     <span>{syllabus.topics.length} Lessons</span>
                     <Separator orientation="vertical" />
-                    <span>{syllabus.time} Hour</span>
+                    <span>{syllabus.time}</span>
                   </p>
                 </div>
               </AccordionTrigger>
