@@ -1,5 +1,10 @@
-import { useState } from "react";
-import { FaChevronDown, FaChevronUp, FaClock } from "react-icons/fa";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { Separator } from "@/components/ui/separator";
 
 interface SyllabusItem {
   title: string;
@@ -29,7 +34,7 @@ const syllabusData: SyllabusItem[] = [
       "Low-fidelity Prototypes",
       "Wireframing Basics",
       "Usability Testing",
-      "Usability Testing",
+      "Iterative Design",
     ],
     time: "1 hour",
   },
@@ -46,51 +51,41 @@ const syllabusData: SyllabusItem[] = [
 ];
 
 const SyllabusAccordion: React.FC = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  const toggleAccordion = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
-
   return (
-    <div className="w-full max-w-6xl mx-auto border-green-500 mt-10">
-      <div className="space-y-5 border border-gray-400 dark:border-gray-700 rounded-md">
-        {syllabusData.map((module, index) => (
-          <div
-            key={index}
-            className="border-b border-gray-300 dark:border-gray-700 p-4 w-full shadow-sm "
-          >
-            <button
-              className="flex justify-between items-center w-full text-lg md:text-xl font-semibold text-gray-800 dark:text-gray-200 gap-20 h-5"
-              onClick={() => toggleAccordion(index)}
-            >
-              <div className="flex items-center gap-3">
-                {openIndex === index ? (
-                  <FaChevronUp className="text-blue-600" />
-                ) : (
-                  <FaChevronDown className="text-gray-500" />
-                )}
-                <span>{module.title}</span>
-              </div>
-              <div className="text-sm md:text-base text-gray-500 flex items-center gap-2">
-                <span>{module.topics.length} Lessons</span>
-                <FaClock />
-                <span>{module.time}</span>
-              </div>
-            </button>
-            {openIndex === index && (
-              <ul className="pl-8 mt-3 text-gray-600 dark:text-gray-300 text-base md:text-lg">
-                {module.topics.map((topic, idx) => (
-                  <li key={idx} className="py-1">
-                    • {topic}
-                  </li>
+    <section>
+      <header>
+        <h1 className="text-xl font-bold">Syllabus</h1>
+      </header>
+      <div className="w-full overflow-x-auto my-6">
+        <Accordion
+          type="multiple"
+          className="min-w-[32rem] max-w-[40rem] border dark:border-blue-300/30 rounded-md p-3"
+        >
+          {syllabusData.map((syllabus) => (
+            <AccordionItem key={syllabus.title} value={syllabus.title}>
+              <AccordionTrigger className="hover:no-underline">
+                <div className="flex justify-between w-full px-4">
+                  <h3 className="font-bold text-base">{syllabus.title}</h3>
+
+                  <p className="flex h-[3vh] items-center gap-2 font-semibold text-gray-500 text-sm">
+                    <span>{syllabus.topics.length} Lessons</span>
+                    <Separator orientation="vertical" />
+                    <span>{syllabus.time} Hour</span>
+                  </p>
+                </div>
+              </AccordionTrigger>
+              <AccordionContent className="px-4">
+                {syllabus.topics.map((topic) => (
+                  <p className="space-y-3 font-semibold" key={topic}>
+                    {topic}
+                  </p>
                 ))}
-              </ul>
-            )}
-          </div>
-        ))}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
-    </div>
+    </section>
   );
 };
 

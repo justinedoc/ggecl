@@ -49,7 +49,7 @@ const TabNavigation: React.FC<{
   activeTab: string;
   setActiveTab: (tab: string) => void;
 }> = ({ activeTab, setActiveTab }) => (
-  <div className="flex gap-4 md:w-[65%] w-full">
+  <div className="flex gap-4 md:w-[65%] w-full overflow-x-auto">
     {tabs.map((tab) => (
       <Button
         variant={"ghost"}
