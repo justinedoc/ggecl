@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
@@ -36,21 +36,31 @@ import LoadingAnim from "../ui/LoadingAnim";
 import { useNavigate } from "react-router";
 import { useContext } from "react";
 import { AuthTabsContext } from "../pages/Signup";
+import { useDispatch, useSelector } from "react-redux";
+import { selectFormData } from "@/app/features/auth/student/signup/SignupTabsPagination";
+import { createAccount } from "@/app/features/auth/student/signup/CreateAccount";
+import type { AppDispatch } from "@/app/store"; // Import your dispatch type
 
+// Define the schema and infer its type
 const formSchema = z.object({
   fullname: z
-    .string({
-      message: "Please enter your full name",
-    })
-    .min(2)
-    .max(50),
-  dateOfBirth: z.date().min(new Date(1900, 0, 1)),
+    .string({ message: "Please enter your full name" })
+    .min(2, "Full name must be at least 2 characters")
+    .max(50, "Full name must be 50 characters or less"),
+  dateOfBirth: z
+    .date()
+    .min(new Date(1900, 0, 1), "Date of birth must be after 1900"),
   gender: z.enum(["male", "female", "other"]),
 });
 
-function SignupDetailsForm() {
+type SignupDetailsFormData = z.infer<typeof formSchema>;
+
+function SignupDetailsForm(): JSX.Element {
+  const formData = useSelector(selectFormData);
   const navigate = useNavigate();
-  const form = useForm<z.infer<typeof formSchema>>({
+  const dispatch = useDispatch<AppDispatch>();
+
+  const form = useForm<SignupDetailsFormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       fullname: "",
@@ -60,12 +70,18 @@ function SignupDetailsForm() {
   });
 
   const { setCurrentTab } = useContext(AuthTabsContext);
-  async function onSubmit(data: FieldValues) {
-    // TODO: send to server
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log(data);
+
+  async function onSubmit(data: SignupDetailsFormData): Promise<void> {
+    dispatch(createAccount({ ...formData, ...data }))
+      .unwrap()
+      .then((res: unknown) => {
+        console.log("Account created:", res);
+        // navigate("/dashboard");
+      })
+      .catch((error: unknown) => {
+        console.error("Create account error:", error);
+      });
     form.reset();
-    navigate("/dashboard");
   }
 
   return (
@@ -77,6 +93,7 @@ function SignupDetailsForm() {
         <FormHead title="Tell us about yourself">
           Let us know more about you
         </FormHead>
+
         <FormField
           control={form.control}
           name="fullname"
@@ -97,6 +114,7 @@ function SignupDetailsForm() {
             </FormItem>
           )}
         />
+
         <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
           <FormField
             control={form.control}
@@ -123,6 +141,7 @@ function SignupDetailsForm() {
               </FormItem>
             )}
           />
+
           <FormField
             control={form.control}
             name="dateOfBirth"
@@ -133,7 +152,7 @@ function SignupDetailsForm() {
                   <PopoverTrigger asChild>
                     <FormControl>
                       <Button
-                        variant={"outline"}
+                        variant="outline"
                         className={cn(
                           "w-full flex pl-3 text-left font-normal dark:bg-gray-900 dark:border-blue-300/30",
                           !field.value && "text-muted-foreground"
@@ -161,19 +180,14 @@ function SignupDetailsForm() {
                     />
                   </PopoverContent>
                 </Popover>
-
                 <FormMessage />
               </FormItem>
             )}
           />
         </div>
+
         <div className="flex justify-between mt-4">
-          <Button
-            type="button"
-            onClick={() => {
-              setCurrentTab("previous");
-            }}
-          >
+          <Button type="button" onClick={() => setCurrentTab("previous")}>
             Back
           </Button>
           <Button type="submit">Signup</Button>

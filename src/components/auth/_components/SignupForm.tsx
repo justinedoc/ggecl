@@ -5,34 +5,42 @@ import { useContext, useState } from "react";
 import { InputBox } from "../ui/InputBox";
 import { FaXmark } from "react-icons/fa6";
 import { IoEye, IoEyeOff } from "react-icons/io5";
-import { FieldValues, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
-
 import GoogleSigninBtn from "../ui/GoogleSigninBtn";
 import { AuthTabsContext, AuthTabsType } from "../pages/Signup";
 import { Input } from "@/components/ui/input";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectFormData,
+  updateFormData,
+} from "@/app/features/auth/student/signup/SignupTabsPagination";
 
 const SignupSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters long"),
 });
 
-export default function SignupForm() {
+type SignupFormData = z.infer<typeof SignupSchema>;
+
+export default function SignupForm(): JSX.Element {
   const [isPasswordHidden, setIsPasswordHidden] = useState(false);
   const { setCurrentTab }: AuthTabsType = useContext(AuthTabsContext);
+  const dispatch = useDispatch();
+  const formData = useSelector(selectFormData);
 
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting, isValid },
     watch,
-  } = useForm({
+  } = useForm<SignupFormData>({
     resolver: zodResolver(SignupSchema),
     defaultValues: {
-      email: "",
-      password: "",
+      email: formData.email || "",
+      password: formData.password || "",
     },
   });
 
@@ -57,16 +65,17 @@ export default function SignupForm() {
     ];
   }
 
-  async function createAcc(data: FieldValues) {
+  async function createAcc(data: SignupFormData): Promise<void> {
+    dispatch(updateFormData(data));
     setCurrentTab("next");
   }
 
   const password: string = watch("password");
-  const email: string | null = watch("email");
-  const isEmailValid = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const email: string = watch("email");
+  const isEmailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
   const isPasswordValid = handleCheckPassword(password).every(
-    (password) => password.isChecked
+    (check) => check.isChecked
   );
 
   return (
@@ -85,12 +94,12 @@ export default function SignupForm() {
           type="email"
           name="email"
           className={`border ${
-            errors?.email ? "border-red-500" : "border-gray-400/30"
-          }  bg-transparent w-full p-2 rounded-sm focus:ring-2 focus:ring-blue-500/30 outline-none`}
+            errors.email ? "border-red-500" : "border-gray-400/30"
+          } bg-transparent w-full p-2 rounded-sm focus:ring-2 focus:ring-blue-500/30 outline-none`}
         />
 
         <aside className="absolute w-fit top-[2.8rem] right-2">
-          {errors?.email && !isEmailValid ? (
+          {errors.email && !isEmailValid ? (
             <FaXmark className="text-red-500" size={22} />
           ) : (
             <FaCheckCircle
@@ -100,9 +109,9 @@ export default function SignupForm() {
           )}
         </aside>
 
-        {errors?.email && (
+        {errors.email && (
           <p className="text-red-500 text-xs capitalize">
-            {errors?.email?.message as string}
+            {errors.email.message as string}
           </p>
         )}
       </InputBox>
@@ -114,12 +123,12 @@ export default function SignupForm() {
           type={isPasswordHidden ? "password" : "text"}
           name="password"
           className={`border ${
-            errors?.password ? "border-red-500" : "border-gray-400/30"
-          }  bg-transparent w-full p-2 rounded-sm focus:ring-2 focus:ring-blue-500/30 outline-none`}
+            errors.password ? "border-red-500" : "border-gray-400/30"
+          } bg-transparent w-full p-2 rounded-sm focus:ring-2 focus:ring-blue-500/30 outline-none`}
         />
-        {errors?.password && (
+        {errors.password && (
           <p className="text-red-500 text-xs capitalize">
-            {errors?.password?.message as string}
+            {errors.password.message as string}
           </p>
         )}
 
@@ -157,12 +166,13 @@ interface PasswordType {
   message: string;
   isChecked: boolean;
 }
+
 interface PasswordChecksType {
   password: string;
   checks: (password: string) => PasswordType[];
 }
 
-function PasswordChecks({ password, checks }: PasswordChecksType) {
+function PasswordChecks({ password, checks }: PasswordChecksType): JSX.Element {
   return (
     <div className="space-y-2 mt-4">
       {checks(password).map(({ message, isChecked }) => (
