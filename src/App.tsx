@@ -6,6 +6,8 @@ import Cart from "./components/landing/pages/Cart";
 import Layout from "./components/landing/Layout";
 import Home from "./components/landing/pages/Home";
 import CoursesPage from "./components/landing/pages/CoursePage";
+import Instructor from "./components/landing/pages/Instructor";
+import NotFound from "./components/ui/NotFound.tsx";
 
 function App() {
   return (
@@ -15,10 +17,11 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/instructor" element={<Instructor />} />
         <Route path="/courses/:id" element={<CoursesPage />} />
       </Route>
       <Route path="/courses" element={<Courses />} />
-      <Route path="*" element={<h1>Not found</h1>} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
