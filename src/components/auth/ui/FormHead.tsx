@@ -5,13 +5,11 @@ export function FormHead({
   children,
 }: {
   title: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }) {
   return (
     <header className="space-y-2 text-center">
-      <h1 className="text-[1.9rem] font-bold leading-[0.9]">
-        {title}
-      </h1>
+      <h1 className="text-2xl font-bold leading-tight">{title}</h1>
       <p className="text-md font-light">{children}</p>
     </header>
   );

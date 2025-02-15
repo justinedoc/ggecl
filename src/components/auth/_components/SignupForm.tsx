@@ -1,7 +1,7 @@
 import { CustomLink } from "../ui/CustomLink";
 import { FormHead } from "../ui/FormHead";
 import { FaCheck, FaCheckCircle } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { InputBox } from "../ui/InputBox";
 import { FaXmark } from "react-icons/fa6";
 import { IoEye, IoEyeOff } from "react-icons/io5";
@@ -9,10 +9,10 @@ import { FieldValues, useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/button";
-import { DarkOverlay } from "../ui/DarkOverlay";
-import LoadingAnim from "../ui/LoadingAnim";
+
 import GoogleSigninBtn from "../ui/GoogleSigninBtn";
-import { useNavigate } from "react-router";
+import { AuthTabsContext, AuthTabsType } from "../pages/Signup";
+import { Input } from "@/components/ui/input";
 
 const SignupSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -20,12 +20,11 @@ const SignupSchema = z.object({
 });
 
 export default function SignupForm() {
-  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
-  const navigate = useNavigate();
+  const [isPasswordHidden, setIsPasswordHidden] = useState(false);
+  const { setCurrentTab }: AuthTabsType = useContext(AuthTabsContext);
 
   const {
     register,
-    reset,
     handleSubmit,
     formState: { errors, isSubmitting, isValid },
     watch,
@@ -59,11 +58,7 @@ export default function SignupForm() {
   }
 
   async function createAcc(data: FieldValues) {
-    // TODO: send to server
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log(data);
-    reset();
-    navigate("/dashboard");
+    setCurrentTab("next");
   }
 
   const password: string = watch("password");
@@ -77,7 +72,7 @@ export default function SignupForm() {
   return (
     <form
       onSubmit={handleSubmit(createAcc)}
-      className="flex flex-col gap-7 w-full md:mt-5 md:p-5 "
+      className="flex flex-col gap-6 w-full md:mt-5 md:p-5"
     >
       <FormHead title="Create an account">
         Already have an account? <CustomLink to="/login">Login</CustomLink>
@@ -85,7 +80,7 @@ export default function SignupForm() {
 
       <InputBox>
         <label className="text-md font-semibold">Email</label>
-        <input
+        <Input
           {...register("email")}
           type="email"
           name="email"
@@ -94,7 +89,7 @@ export default function SignupForm() {
           }  bg-transparent w-full p-2 rounded-sm focus:ring-2 focus:ring-blue-500/30 outline-none`}
         />
 
-        <aside className="absolute w-fit top-[2.68rem] right-2">
+        <aside className="absolute w-fit top-[2.8rem] right-2">
           {errors?.email && !isEmailValid ? (
             <FaXmark className="text-red-500" size={22} />
           ) : (
@@ -114,7 +109,7 @@ export default function SignupForm() {
 
       <InputBox>
         <label className="text-md font-semibold">Password</label>
-        <input
+        <Input
           {...register("password")}
           type={isPasswordHidden ? "password" : "text"}
           name="password"
@@ -143,9 +138,9 @@ export default function SignupForm() {
       <Button
         type="submit"
         disabled={!isPasswordValid || !isEmailValid || !isValid || isSubmitting}
-        className="bg-blue-500 font-semibold hover:bg-zinc-500/50"
+        className="bg-gray-900 border border-blue-300/30 disabled:border-0 disabled:bg-gray-600 dark:disabled:bg-gray-700 dark:text-white font-semibold hover:bg-gray-800"
       >
-        {isSubmitting ? "Signing up..." : "Signup"}
+        {isSubmitting ? "Processing..." : "Proceed"}
       </Button>
 
       <GoogleSigninBtn>Sign up with Google</GoogleSigninBtn>
@@ -154,12 +149,6 @@ export default function SignupForm() {
         <CustomLink>Terms of Service</CustomLink>,{" "}
         <CustomLink>Privacy Policy</CustomLink>
       </p>
-
-      {isSubmitting && (
-        <DarkOverlay>
-          <LoadingAnim />
-        </DarkOverlay>
-      )}
     </form>
   );
 }
