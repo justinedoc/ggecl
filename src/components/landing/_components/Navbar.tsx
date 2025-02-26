@@ -130,7 +130,7 @@ const Navbar = ({ showNav }: { showNav?: boolean }) => {
             </Button>
           </Link>
           <Link to="/signup">
-            <Button className="w-full text-white font-bold rounded-md btn">
+            <Button className="w-full text-white font-bold rounded-md bg-gray-900">
               Get Started
             </Button>
           </Link>

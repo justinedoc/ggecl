@@ -8,10 +8,13 @@ import Home from "./components/landing/pages/Home";
 import CoursesPage from "./components/landing/pages/CoursePage";
 import Instructor from "./components/landing/pages/Instructor";
 import NotFound from "./components/ui/NotFound.tsx";
+import StudentLayout from "./components/dashboard/students/_components/StudentLayout.tsx";
+import StudentHome from "@/components/dashboard/students/pages/Home.tsx";
 
 function App() {
   return (
     <Routes>
+      {/* Landing page routes  */}
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="/cart" element={<Cart />} />
@@ -20,6 +23,12 @@ function App() {
         <Route path="/instructor" element={<Instructor />} />
         <Route path="/courses/:id" element={<CoursesPage />} />
       </Route>
+
+      {/* Dashboard routes  */}
+      <Route path="/student/dashboard" element={<StudentLayout />}>
+        <Route path="home" element={<StudentHome />} />
+      </Route>
+
       <Route path="/courses" element={<Courses />} />
       <Route path="*" element={<NotFound />} />
     </Routes>

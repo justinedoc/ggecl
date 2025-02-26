@@ -6,7 +6,7 @@ interface AccountCreationData {
   password?: string;
   fullname: string;
   gender: string;
-  dateOfBirth: Date;
+  dateOfBirth: string;
 }
 
 interface AccountState {

@@ -1,8 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -15,11 +13,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import {
   Select,
   SelectContent,
   SelectItem,
@@ -28,8 +21,6 @@ import {
 } from "@/components/ui/select";
 
 import { Input } from "@/components/ui/input";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
 import { FormHead } from "../ui/FormHead";
 import { DarkOverlay } from "../ui/DarkOverlay";
 import LoadingAnim from "../ui/LoadingAnim";
@@ -47,9 +38,7 @@ const formSchema = z.object({
     .string({ message: "Please enter your full name" })
     .min(2, "Full name must be at least 2 characters")
     .max(50, "Full name must be 50 characters or less"),
-  dateOfBirth: z
-    .date()
-    .min(new Date(1900, 0, 1), "Date of birth must be after 1900"),
+  dateOfBirth: z.string(),
   gender: z.enum(["male", "female", "other"]),
 });
 
@@ -64,7 +53,7 @@ function SignupDetailsForm(): JSX.Element {
     resolver: zodResolver(formSchema),
     defaultValues: {
       fullname: "",
-      dateOfBirth: new Date(),
+      dateOfBirth: "",
       gender: "other",
     },
   });
@@ -148,38 +137,14 @@ function SignupDetailsForm(): JSX.Element {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel>Date of birth</FormLabel>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant="outline"
-                        className={cn(
-                          "w-full flex pl-3 text-left font-normal dark:bg-gray-900 dark:border-blue-300/30",
-                          !field.value && "text-muted-foreground"
-                        )}
-                      >
-                        {field.value ? (
-                          format(field.value, "PPP")
-                        ) : (
-                          <span>Pick a date</span>
-                        )}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      className="dark:bg-gray-900 dark:border-blue-300/30"
-                      mode="single"
-                      selected={field.value}
-                      onSelect={field.onChange}
-                      disabled={(date) =>
-                        date > new Date() || date < new Date("1900-01-01")
-                      }
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
+                <FormControl>
+                  <Input
+                    type="date"
+                    className="dark:bg-gray-900 dark:border-blue-300/30"
+                    value={field.value || ""}
+                    onChange={field.onChange}
+                  />
+                </FormControl>
                 <FormMessage />
               </FormItem>
             )}
