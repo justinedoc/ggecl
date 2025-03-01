@@ -8,7 +8,8 @@ import Home from "./components/landing/pages/Home";
 import CoursesPage from "./components/landing/pages/CoursePage";
 import Instructor from "./components/landing/pages/Instructor";
 import NotFound from "./components/ui/NotFound.tsx";
-import StudentLayout from "./components/dashboard/students/_components/StudentLayout.tsx";
+import StudentLayout from "./components/Dashboard/students/_components/StudentLayout";
+import Assignment from "./components/Dashboard/students/pages/Assignment";
 import StudentHome from "@/components/dashboard/students/pages/Home.tsx";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
       {/* Dashboard routes  */}
       <Route path="/student/dashboard" element={<StudentLayout />}>
         <Route path="home" element={<StudentHome />} />
+        <Route path="assignment" element={<Assignment />} />
       </Route>
 
       <Route path="/courses" element={<Courses />} />

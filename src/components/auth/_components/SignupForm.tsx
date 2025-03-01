@@ -155,8 +155,8 @@ export default function SignupForm(): JSX.Element {
       <GoogleSigninBtn>Sign up with Google</GoogleSigninBtn>
       <p className="text-sm text-center">
         By creating an account, you agree to GGECL's{" "}
-        <CustomLink>Terms of Service</CustomLink>,{" "}
-        <CustomLink>Privacy Policy</CustomLink>
+        <CustomLink to="https://ggecl.com/terms.html">Terms of Service</CustomLink>,{" "}
+        <CustomLink to="https://ggecl.com/terms.html">Privacy Policy</CustomLink>
       </p>
     </form>
   );
