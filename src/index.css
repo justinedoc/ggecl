@@ -38,7 +38,7 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 222, 40%, 11%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
@@ -72,7 +72,9 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
-
+body::-webkit-scrollbar{
+  display: none;
+}
 @layer base {
   * {
     @apply border-border;
@@ -81,14 +83,27 @@
     @apply bg-background text-foreground;
   }
 }
-
+input[ype="date"]{
+  display: none;
+  -webkit-appearance: none;
+}
 .transition-all,
 body {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 0.6s;
 }
+/* Hide the calendar icon in Chrome, Safari, Edge */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
 
+/* Hide the calendar icon in Firefox */
+input[type="date"] {
+  appearance: none;
+  -moz-appearance: textfield;
+}
 .btn {
   background: #123354;
   transition: 0.4s linear;
