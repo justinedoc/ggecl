@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { FaBell, FaChevronDown } from "react-icons/fa";
+import { Moon, Sun } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import SearchBar from "@/components/ui/SearchBar";
@@ -7,21 +8,29 @@ import SearchBar from "@/components/ui/SearchBar";
 const Navbar = () => {
   const [isNotifOpen, setIsNotifOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("theme") === "dark"
+  );
+
   const notifRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Close dropdowns when clicking outside
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (
-        notifRef.current && !notifRef.current.contains(event.target as Node)
-      ) {
+      if (notifRef.current && !notifRef.current.contains(event.target as Node)) {
         setIsNotifOpen(false);
       }
-      if (
-        dropdownRef.current && !dropdownRef.current.contains(event.target as Node)
-      ) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsDropdownOpen(false);
       }
     };
@@ -38,7 +47,6 @@ const Navbar = () => {
           <SearchBar />
         </div>
 
-        {/* Notifications */}
         <div className="relative" ref={notifRef}>
           <Button
             variant="ghost"
@@ -51,13 +59,12 @@ const Navbar = () => {
             </span>
           </Button>
 
-          {/* Notification Popup (Fixed & Above All) */}
           {isNotifOpen && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="fixed top-36 right-4 z-50 w-64 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-3 flex flex-col gap-2"
+              className="fixed top-16 right-4 z-50 w-64 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-3 flex flex-col gap-2"
             >
               <p className="text-sm">🔔 New notification 1</p>
               <hr />
@@ -68,6 +75,14 @@ const Navbar = () => {
           )}
         </div>
 
+        <button
+          onClick={() => setDarkMode((prev) => !prev)}
+          className="size-9 rounded-full bg-blue-300/30 flex items-center justify-center hover:bg-blue-300/80 transition-all"
+          aria-label="Toggle Dark Mode"
+        >
+          {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+        </button>
+
         {/* User Profile & Dropdown */}
         <div className="relative" ref={dropdownRef}>
           <Button
@@ -75,33 +90,30 @@ const Navbar = () => {
             className="flex items-center space-x-2 p-2 hover:bg-gray-200 focus:bg-gray-200 dark:focus:bg-gray-800 dark:hover:bg-gray-800"
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           >
-            <img src="https://i.pinimg.com/474x/14/88/f3/1488f35bc175631415a048ca5208aa3f.jpg" alt="User" className="w-8 h-8 rounded-full object-cover" />
+            <img
+              src="https://i.pinimg.com/474x/14/88/f3/1488f35bc175631415a048ca5208aa3f.jpg"
+              alt="User"
+              className="w-8 h-8 rounded-full object-cover"
+            />
             <span className="text-sm font-medium md:block hidden">Josh Dickson</span>
             <FaChevronDown className="text-xs" />
           </Button>
 
-          {/* User Dropdown (Fixed & Above All) */}
           {isDropdownOpen && (
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="fixed top-36 right-4 z-50 w-60 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 flex flex-col gap-3 "
+              className="fixed top-16 right-4 z-50 w-60 bg-white dark:bg-gray-800 shadow-lg rounded-lg p-4 flex flex-col gap-3 "
             >
               <div className="hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2 cursor-pointer p-2 rounded-lg border border-gray-300 dark:border-gray-600">
-                <div className="flex items-center gap-2">
-                  ⚙ <span>Settings</span>
-                </div>
+                ⚙ <span>Settings</span>
               </div>
               <div className="hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center gap-2 cursor-pointer p-2 rounded-lg">
-                <div className="flex items-center gap-2">
-                  🔑 <span>Change Password</span>
-                </div>
+                🔑 <span>Change Password</span>
               </div>
-              <div className="hover:bg-red-100 dark:hover:bg-[crimson] height-max text-red-600 dark:text-red-400 dark:hover:text-white flex items-center gap-2 cursor-pointer p-2 rounded-lg">
-                <div className="flex items-center gap-2">
-                  🚪 <span>Logout</span>
-                </div>
+              <div className="hover:bg-red-100 dark:hover:bg-[crimson] text-red-600 dark:text-red-400 dark:hover:text-white flex items-center gap-2 cursor-pointer p-2 rounded-lg">
+                🚪 <span>Logout</span>
               </div>
             </motion.div>
           )}
