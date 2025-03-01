@@ -31,12 +31,12 @@ const Login = () => {
 
             <button
               onClick={() => setDarkMode(!darkMode)}
-              className="absolute md:top-10 top-3 md:right-20 right-5 p-2 rounded-full text-gray-800 dark:text-gray-300 dark:bg-gray-800 bg-gray-200 dark:hover:bg-gray-700"
+              className="absolute md:top-10 top-3 md:right-20 right-5 p-2 rounded-full text-gray-800 dark:text-gray-300 dark:bg-gray-800 bg-gray-200 dark:hover:bg-gray-700 hidden"
             >
               {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
             </button>
             <Link to="/" className=' absolute top-5 left-5'>
-      <img src="src/assets/images/LOGO.png" className='w-14 h-14 rounded-full p-1 bg-gray-800 md:hidden block' alt="" />
+      <img src="src/assets/images/LOGO.png" className='w-14 h-14 rounded-full p-1 bg-gray-800 hidden ' alt="" />
       </Link>
       <div className="flex flex-col justify-center items-center p-6 sm:p- z-10 mt-8">
         <div className="w-full max-w-md space-y-5">

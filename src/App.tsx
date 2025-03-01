@@ -8,7 +8,7 @@ import Home from "./components/landing/pages/Home";
 import CoursesPage from "./components/landing/pages/CoursePage";
 import Instructor from "./components/landing/pages/Instructor";
 import NotFound from "./components/ui/NotFound.tsx";
-import StudentLayout from "./components/dashboard/students/_components/StudentLayout.tsx";
+import StudentLayout from "./components/Dashboard/students/_components/StudentLayout";
 import StudentHome from "@/components/dashboard/students/pages/Home.tsx";
 
 function App() {
