@@ -66,22 +66,22 @@ export default function Assignment() {
       <Table>
             <TableHeader className="border bg-gray-50 rounded-lg">
               <TableRow>
-                <TableHead className="font-bold text-gray-800 dark:text-gray-100" >Assignment Title</TableHead>
-                <TableHead className="font-bold text-gray-800 dark:text-gray-100" >Course/Lesson</TableHead>
-                <TableHead className="font-bold text-gray-800 dark:text-gray-100" >Due Date</TableHead>
-                <TableHead className="font-bold text-gray-800 dark:text-gray-100" >Status</TableHead>
-                <TableHead className="font-bold text-gray-800 dark:text-gray-100" >Submit</TableHead>
+                <TableHead className="font-bold text-gray-800 dark:text-gray-100 whitespace-nowrap" >Assignment Title</TableHead>
+                <TableHead className="font-bold text-gray-800 dark:text-gray-100 whitespace-nowrap" >Course/Lesson</TableHead>
+                <TableHead className="font-bold text-gray-800 dark:text-gray-100 whitespace-nowrap" >Due Date</TableHead>
+                <TableHead className="font-bold text-gray-800 dark:text-gray-100 whitespace-nowrap" >Status</TableHead>
+                <TableHead className="font-bold text-gray-800 dark:text-gray-100 whitespace-nowrap" >Submit</TableHead>
               </TableRow>
             </TableHeader>
             <br />
         <TableBody>
           {paginatedData.map((assignment, index) => (
             <TableRow key={index}  className="border mt-20 mb-20 rounded-lg ">
-              <TableCell>{assignment.title}</TableCell>
-              <TableCell>{assignment.course}</TableCell>
-              <TableCell>{assignment.dueDate}</TableCell>
-              <TableCell>{assignment.status}</TableCell>
-              <TableCell>
+              <TableCell className="whitespace-nowrap">{assignment.title}</TableCell>
+              <TableCell className="whitespace-nowrap">{assignment.course}</TableCell>
+              <TableCell className="whitespace-nowrap">{assignment.dueDate}</TableCell>
+              <TableCell className="whitespace-nowrap">{assignment.status}</TableCell>
+              <TableCell className="whitespace-nowrap">
                 {assignment.status === "Pending" ? (
                   <button className="bg-gray-800 text-md text-white px-3 py-1 rounded-md">Submit</button>
                 ) : (
