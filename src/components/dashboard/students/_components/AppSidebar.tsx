@@ -14,6 +14,7 @@ import {
 import { Link, useLocation } from "react-router";
 import { GoHomeFill } from "react-icons/go";
 import { BiSupport } from "react-icons/bi";
+import { Calendar, ClipboardPaste, GraduationCap, MessagesSquare, Settings } from "lucide-react";
 
 interface MenuItem {
   title: string;
@@ -23,9 +24,34 @@ interface MenuItem {
 
 const menuItems: MenuItem[] = [
   {
-    title: "Home",
+    title: "Dashboard",
     url: "home",
     icon: GoHomeFill,
+  },
+  {
+    title: "Assignments",
+    url: "assignments",
+    icon: ClipboardPaste,
+  },
+  {
+    title: "Schedule",
+    url: "calendar",
+    icon: Calendar,
+  },
+  {
+    title: "Discussions",
+    url: "chat",
+    icon: MessagesSquare,
+  },
+  {
+    title: "Courses",
+    url: "courses",
+    icon: GraduationCap,
+  },
+  {
+    title: "Settings",
+    url: "settings",
+    icon: Settings,
   },
 ];
 
