@@ -13,6 +13,7 @@ import Assignment from "./components/Dashboard/students/pages/Assignment";
 import Settings from "./components/Dashboard/students/pages/Settings";
 import StudentHome from "@/components/Dashboard/students/pages/StudentHome.tsx";
 import StudentCourses from "@/components/Dashboard/students/pages/StudentCourses.tsx";
+import StudentCalendar from "@/components/Dashboard/students/pages/StudentCalendar.tsx";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="assignment" element={<Assignment />} />
         <Route path="settings" element={<Settings />} />
         <Route path="courses" element={<StudentCourses />} />
+        <Route path="calendar" element={<StudentCalendar />} />
       </Route>
 
       <Route path="/courses" element={<Courses />} />

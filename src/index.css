@@ -72,7 +72,8 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
-body::-webkit-scrollbar{
+body::-webkit-scrollbar,
+.mf::-webkit-scrollbar{
   display: none;
 }
 @layer base {
