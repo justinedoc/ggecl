@@ -1,12 +1,11 @@
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { Navigate, Outlet } from "react-router";
+import {  Outlet } from "react-router";
 import { AppSidebar } from "./AppSidebar";
 import Navbar from "./Navbar";
 
 function StudentLayout() {
   return (
     <SidebarProvider>
-      <Navigate to="home" />
       <AppSidebar />
       <main className="w-full overflow-x-hidden">
         {/*  // replace navabar comp with your navbar */}

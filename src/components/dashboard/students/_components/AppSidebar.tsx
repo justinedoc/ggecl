@@ -25,12 +25,12 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     title: "Dashboard",
-    url: "home",
+    url: "/student/dashboard",
     icon: GoHomeFill,
   },
   {
     title: "Assignments",
-    url: "assignments",
+    url: "assignment",
     icon: ClipboardPaste,
   },
   {

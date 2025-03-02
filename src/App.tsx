@@ -33,7 +33,7 @@ function App() {
       {/* Dashboard routes  */}
       <Route path="/student/dashboard" element={<StudentLayout />}>
         {/* Student Dashboard routes  */}
-        <Route path="home" element={<StudentHome />} />
+        <Route index element={<StudentHome />} />
         <Route path="assignment" element={<Assignment />} />
         <Route path="settings" element={<Settings />} />
         <Route path="courses" element={<StudentCourses />} />
