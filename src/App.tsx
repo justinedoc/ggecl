@@ -14,6 +14,8 @@ import Settings from "./components/Dashboard/students/pages/Settings";
 import StudentHome from "@/components/Dashboard/students/pages/StudentHome.tsx";
 import StudentCourses from "@/components/Dashboard/students/pages/StudentCourses.tsx";
 import StudentCalendar from "@/components/Dashboard/students/pages/StudentCalendar.tsx";
+import StudentChat from "@/components/Dashboard/students/pages/StudentChat.tsx";
+import CourseDetails from "@/components/Dashboard/Instructor/CoursesDetails.tsx";
 
 function App() {
   return (
@@ -30,12 +32,16 @@ function App() {
 
       {/* Dashboard routes  */}
       <Route path="/student/dashboard" element={<StudentLayout />}>
+      {/* Student Dashboard routes  */}
         <Route path="home" element={<StudentHome />} />
         <Route path="assignment" element={<Assignment />} />
         <Route path="settings" element={<Settings />} />
         <Route path="courses" element={<StudentCourses />} />
         <Route path="calendar" element={<StudentCalendar />} />
+        <Route path="StudentChat" element={<StudentChat />} />
+
       </Route>
+        <Route path="/mycourses" element={<CourseDetails />} />
 
       <Route path="/courses" element={<Courses />} />
       <Route path="*" element={<NotFound />} />

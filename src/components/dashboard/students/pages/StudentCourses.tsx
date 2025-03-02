@@ -53,14 +53,14 @@ const StudentCourses = () => {
             </div>
         </div>
         <div className="flex flex-wrap items-center gap-4 md:justify-end">
-        <div className="flex flex-col gap-2 md:w-max w-full">
+        {/* <div className="flex flex-col gap-2 md:w-max w-full">
         <label htmlFor="title">By title</label>
               <select className="w-full sm:w-auto pl-3 pr-10 py-2 border border-gray-300 dark:border-gray-700 bg-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500" id="title">
                 <option className="bg-gray-200 dark:bg-gray-900">Sort By</option>
                 <option className="bg-gray-200 dark:bg-gray-900">Progress</option>
                 <option className="bg-gray-200 dark:bg-gray-900">Title</option>
               </select>
-          </div>
+          </div> */}
           <div className="flex flex-col gap-2 md:w-max w-full">
             <label htmlFor="filter">By completion</label>
               <select className="w-full sm:w-auto pl-3 pr-10 py-2 border border-gray-300 dark:border-gray-700 bg-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500" id="filter">
