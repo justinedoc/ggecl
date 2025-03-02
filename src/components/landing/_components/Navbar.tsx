@@ -88,7 +88,7 @@ const Navbar = ({ showNav }: { showNav?: boolean }) => {
             {/* Dark mode toggle */}
             <button
               onClick={() => setDarkMode((prev) => !prev)}
-              className="size-9 rounded-full bg-blue-300/30 flex items-center justify-center hover:bg-blue-300/80 transition-all"
+              className="size-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-300/80 transition-all"
               aria-label="Toggle Dark Mode"
             >
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
