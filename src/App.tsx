@@ -32,16 +32,16 @@ function App() {
 
       {/* Dashboard routes  */}
       <Route path="/student/dashboard" element={<StudentLayout />}>
-      {/* Student Dashboard routes  */}
+        {/* Student Dashboard routes  */}
         <Route path="home" element={<StudentHome />} />
         <Route path="assignment" element={<Assignment />} />
         <Route path="settings" element={<Settings />} />
         <Route path="courses" element={<StudentCourses />} />
         <Route path="calendar" element={<StudentCalendar />} />
-        <Route path="StudentChat" element={<StudentChat />} />
-
+        <Route path="chat" element={<StudentChat />} />
       </Route>
-        <Route path="/mycourses" element={<CourseDetails />} />
+
+      <Route path="/mycourses" element={<CourseDetails />} />
 
       <Route path="/courses" element={<Courses />} />
       <Route path="*" element={<NotFound />} />

@@ -12,12 +12,42 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { FaSearch } from "react-icons/fa";
 
 const assignments = [
-  { title: "Math Homework", course: "Algebra", dueDate: "2025-03-05", status: "Pending" },
-  { title: "Science Project", course: "Physics", dueDate: "2025-03-10", status: "Completed" },
-  { title: "History Essay", course: "History", dueDate: "2025-03-15", status: "Pending" },
-  { title: "Chemistry Lab", course: "Chemistry", dueDate: "2025-03-20", status: "Completed" },
-  { title: "Literature Review", course: "English", dueDate: "2025-03-25", status: "Pending" },
-  { title: "Python Review", course: "Comp Sci", dueDate: "2025-05-03", status: "Progress" },
+  {
+    title: "Math Homework",
+    course: "Algebra",
+    dueDate: "2025-03-05",
+    status: "Pending",
+  },
+  {
+    title: "Science Project",
+    course: "Physics",
+    dueDate: "2025-03-10",
+    status: "Completed",
+  },
+  {
+    title: "History Essay",
+    course: "History",
+    dueDate: "2025-03-15",
+    status: "Pending",
+  },
+  {
+    title: "Chemistry Lab",
+    course: "Chemistry",
+    dueDate: "2025-03-20",
+    status: "Completed",
+  },
+  {
+    title: "Literature Review",
+    course: "English",
+    dueDate: "2025-03-25",
+    status: "Pending",
+  },
+  {
+    title: "Python Review",
+    course: "Comp Sci",
+    dueDate: "2025-05-03",
+    status: "Progress",
+  },
 ];
 
 export default function Assignment() {
@@ -31,7 +61,10 @@ export default function Assignment() {
     .filter((a) => (filterDate ? a.dueDate === filterDate : true));
 
   const totalPages = Math.ceil(filteredAssignments.length / rowsPerPage);
-  const paginatedData = filteredAssignments.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+  const paginatedData = filteredAssignments.slice(
+    (currentPage - 1) * rowsPerPage,
+    currentPage * rowsPerPage
+  );
 
   return (
     <div className="container mx-auto py-8 px-4 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200">
@@ -48,10 +81,30 @@ export default function Assignment() {
             onChange={(e) => setFilterStatus(e.target.value)}
             className="p-2 bg-transparent outline-none border-none shadow-none"
           >
-            <option className="dark:bg-gray-900 bg-gray-100 outline-none" value="All">All Status</option>
-            <option className="dark:bg-gray-900 bg-gray-100 outline-none" value="Pending">Pending</option>
-            <option className="dark:bg-gray-900 bg-gray-100 outline-none" value="Completed">Completed</option>
-            <option className="dark:bg-gray-900 bg-gray-100 outline-none" value="progress">Progress</option>
+            <option
+              className="dark:bg-gray-900 bg-gray-100 outline-none"
+              value="All"
+            >
+              All Status
+            </option>
+            <option
+              className="dark:bg-gray-900 bg-gray-100 outline-none"
+              value="Pending"
+            >
+              Pending
+            </option>
+            <option
+              className="dark:bg-gray-900 bg-gray-100 outline-none"
+              value="Completed"
+            >
+              Completed
+            </option>
+            <option
+              className="dark:bg-gray-900 bg-gray-100 outline-none"
+              value="progress"
+            >
+              Progress
+            </option>
           </select>
           {/* Filter by Date */}
           <input
@@ -64,26 +117,46 @@ export default function Assignment() {
       </div>
 
       <Table>
-            <TableHeader className="border bg-gray-50 rounded-lg">
-              <TableRow>
-                <TableHead className="font-bold text-gray-800 dark:text-gray-100 whitespace-nowrap" >Assignment Title</TableHead>
-                <TableHead className="font-bold text-gray-800 dark:text-gray-100 whitespace-nowrap" >Course/Lesson</TableHead>
-                <TableHead className="font-bold text-gray-800 dark:text-gray-100 whitespace-nowrap" >Due Date</TableHead>
-                <TableHead className="font-bold text-gray-800 dark:text-gray-100 whitespace-nowrap" >Status</TableHead>
-                <TableHead className="font-bold text-gray-800 dark:text-gray-100 whitespace-nowrap" >Submit</TableHead>
-              </TableRow>
-            </TableHeader>
-            <br />
+        <TableHeader className="border bg-gray-50 rounded-lg">
+          <TableRow>
+            <TableHead className="font-bold text-gray-800 dark:text-gray-100 whitespace-nowrap">
+              Assignment Title
+            </TableHead>
+            <TableHead className="font-bold text-gray-800 dark:text-gray-100 whitespace-nowrap">
+              Course/Lesson
+            </TableHead>
+            <TableHead className="font-bold text-gray-800 dark:text-gray-100 whitespace-nowrap">
+              Due Date
+            </TableHead>
+            <TableHead className="font-bold text-gray-800 dark:text-gray-100 whitespace-nowrap">
+              Status
+            </TableHead>
+            <TableHead className="font-bold text-gray-800 dark:text-gray-100 whitespace-nowrap">
+              Submit
+            </TableHead>
+          </TableRow>
+        </TableHeader>
+        <br />
         <TableBody>
           {paginatedData.map((assignment, index) => (
-            <TableRow key={index}  className="border mt-20 mb-20 rounded-lg ">
-              <TableCell className="whitespace-nowrap">{assignment.title}</TableCell>
-              <TableCell className="whitespace-nowrap">{assignment.course}</TableCell>
-              <TableCell className="whitespace-nowrap">{assignment.dueDate}</TableCell>
-              <TableCell className="whitespace-nowrap">{assignment.status}</TableCell>
+            <TableRow key={index} className="border mt-20 mb-20 rounded-lg ">
+              <TableCell className="whitespace-nowrap">
+                {assignment.title}
+              </TableCell>
+              <TableCell className="whitespace-nowrap">
+                {assignment.course}
+              </TableCell>
+              <TableCell className="whitespace-nowrap">
+                {assignment.dueDate}
+              </TableCell>
+              <TableCell className="whitespace-nowrap">
+                {assignment.status}
+              </TableCell>
               <TableCell className="whitespace-nowrap">
                 {assignment.status === "Pending" ? (
-                  <button className="bg-gray-800 text-md text-white px-3 py-1 rounded-md">Submit</button>
+                  <button className="bg-gray-800 text-md text-white px-3 py-1 rounded-md">
+                    Submit
+                  </button>
                 ) : (
                   "Submitted"
                 )}
@@ -93,7 +166,9 @@ export default function Assignment() {
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={5}>Total Assignments: {filteredAssignments.length}</TableCell>
+            <TableCell colSpan={5}>
+              Total Assignments: {filteredAssignments.length}
+            </TableCell>
           </TableRow>
         </TableFooter>
       </Table>
@@ -106,9 +181,24 @@ export default function Assignment() {
             onChange={(e) => setRowsPerPage(Number(e.target.value))}
             className="border rounded-lg p-2 bg-transparent outline-none border-none shadow-none"
           >
-            <option className="dark:bg-gray-900 bg-gray-100 outline-none" value={3}>3</option>
-            <option className="dark:bg-gray-900 bg-gray-100 outline-none" value={5}>5</option>
-            <option className="dark:bg-gray-900 bg-gray-100 outline-none" value={10}>10</option>
+            <option
+              className="dark:bg-gray-900 bg-gray-100 outline-none"
+              value={3}
+            >
+              3
+            </option>
+            <option
+              className="dark:bg-gray-900 bg-gray-100 outline-none"
+              value={5}
+            >
+              5
+            </option>
+            <option
+              className="dark:bg-gray-900 bg-gray-100 outline-none"
+              value={10}
+            >
+              10
+            </option>
           </select>
           <span className="ml-2">rows</span>
         </div>
@@ -125,13 +215,17 @@ export default function Assignment() {
             <button
               key={i}
               onClick={() => setCurrentPage(i + 1)}
-              className={`px-3 py-1 border rounded-md ${currentPage === i + 1 ? "bg-gray-300 dark:bg-gray-800" : ""}`}
+              className={`px-3 py-1 border rounded-md ${
+                currentPage === i + 1 ? "bg-gray-300 dark:bg-gray-800" : ""
+              }`}
             >
               {i + 1}
             </button>
           ))}
           <button
-            onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+            onClick={() =>
+              setCurrentPage((prev) => Math.min(prev + 1, totalPages))
+            }
             disabled={currentPage === totalPages}
             className="p-2 border rounded-md disabled:opacity-50 "
           >

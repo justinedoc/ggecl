@@ -24,7 +24,7 @@ interface MenuItem {
 const menuItems: MenuItem[] = [
   {
     title: "Home",
-    url: "student/dashboard/home",
+    url: "home",
     icon: GoHomeFill,
   },
 ];
@@ -41,7 +41,12 @@ export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader className="flex flex-row items-center justify-between px-4 py-5">
-        <img src="/LOGO-dark.png" width={50} alt="Logo" className="-translate-x-3" />
+        <img
+          src="/LOGO-dark.png"
+          width={50}
+          alt="Logo"
+          className="-translate-x-3"
+        />
         <SidebarTrigger>
           <svg
             className="size-5"
@@ -79,7 +84,10 @@ export function AppSidebar() {
                     size="lg"
                     asChild
                   >
-                    <Link to={item.url} className="flex items-center space-x-2">
+                    <Link
+                      to={`${item.url}`}
+                      className="flex items-center space-x-2"
+                    >
                       <item.icon />
                       <span>{item.title}</span>
                     </Link>
