@@ -15,7 +15,9 @@ import StudentHome from "@/components/Dashboard/students/pages/StudentHome.tsx";
 import StudentCourses from "@/components/Dashboard/students/pages/StudentCourses.tsx";
 import StudentCalendar from "@/components/Dashboard/students/pages/StudentCalendar.tsx";
 import StudentChat from "@/components/Dashboard/students/pages/StudentChat.tsx";
-import CourseDetails from "@/components/Dashboard/Instructor/CoursesDetails.tsx";
+import InstructorSettings from "@/components/Dashboard/Instructor/pages/InstructorSettings.tsx";
+import CoursesDetails from "@/components/Dashboard/Instructor/pages/CoursesDetails.tsx";
+import InstructorLayout from "@/components/Dashboard/Instructor/components/InstructorLayout.tsx"
 
 function App() {
   return (
@@ -41,7 +43,10 @@ function App() {
         <Route path="chat" element={<StudentChat />} />
       </Route>
 
-      <Route path="/mycourses" element={<CourseDetails />} />
+      <Route path="/instructor/dashboard" element={<InstructorLayout />}>
+        <Route path="mycourses" element={<CoursesDetails />} />
+        <Route path="settings" element={<InstructorSettings />} />
+      </Route>
 
       <Route path="/courses" element={<Courses />} />
       <Route path="*" element={<NotFound />} />
