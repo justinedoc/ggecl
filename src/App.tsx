@@ -15,7 +15,12 @@ import StudentHome from "@/components/Dashboard/students/pages/StudentHome.tsx";
 import StudentCourses from "@/components/Dashboard/students/pages/StudentCourses.tsx";
 import StudentCalendar from "@/components/Dashboard/students/pages/StudentCalendar.tsx";
 import StudentChat from "@/components/Dashboard/students/pages/StudentChat.tsx";
-import CourseDetails from "@/components/Dashboard/Instructor/CoursesDetails.tsx";
+import InstructorSettings from "@/components/Dashboard/Instructor/pages/InstructorSettings.tsx";
+import CoursesDetails from "@/components/Dashboard/Instructor/pages/CoursesDetails.tsx";
+import InstructorLayout from "@/components/Dashboard/Instructor/components/InstructorLayout.tsx"
+import Earnings from "@/components/Dashboard/Instructor/pages/Earnings.tsx"
+import InstructorHome from "@/components/Dashboard/Instructor/pages/InstructorHome.tsx"
+import InstructorCourses from "@/components/Dashboard/Instructor/pages/InstructorCourses.tsx"
 
 function App() {
   return (
@@ -41,7 +46,13 @@ function App() {
         <Route path="chat" element={<StudentChat />} />
       </Route>
 
-      <Route path="/mycourses" element={<CourseDetails />} />
+      <Route path="/instructor/dashboard" element={<InstructorLayout />}>
+        <Route path="mycourses" element={<CoursesDetails />} />
+        <Route path="settings" element={<InstructorSettings />} />
+        <Route path="earnings" element={<Earnings />} />
+        <Route index element={<InstructorHome />} />
+        <Route path="courses" element={<InstructorCourses />} />
+      </Route>
 
       <Route path="/courses" element={<Courses />} />
       <Route path="*" element={<NotFound />} />

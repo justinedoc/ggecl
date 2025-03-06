@@ -102,10 +102,18 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .input-field {
   @apply placeholder:text-gray-400 dark:placeholder:text-gray-500 w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md px-4 py-2 text-base outline-none focus:ring-2 focus:ring-blue-400 dark:focus:ring-blue-600;
 }
+.input-field2 {
+  @apply placeholder:text-gray-400 dark:placeholder:text-gray-500 w-full bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-md px-4 py-2 text-base outline-none focus:border;
+}
 .btn-primary {
   @apply text-white px-6 py-3 rounded-md transition;
 }
-
+.guy{
+  background: #3cff9a5f;
+}
+.guy-bg{
+  background: #0204497a;
+}
 /* Hide the calendar icon in Firefox */
 input[type="date"] {
   appearance: none;
