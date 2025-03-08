@@ -88,7 +88,7 @@ const Navbar = ({ showNav }: { showNav?: boolean }) => {
             {/* Dark mode toggle */}
             <button
               onClick={() => setDarkMode((prev) => !prev)}
-              className="size-9 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-300/80 transition-all"
+              className="size-9 rounded-full bg-gray-800 flex items-center justify-center text-gray-200 hover:bg-blue-300/80 transition-all"
               aria-label="Toggle Dark Mode"
             >
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}
@@ -112,7 +112,7 @@ const Navbar = ({ showNav }: { showNav?: boolean }) => {
             <Link
               key={link.path}
               to={link.path}
-              className="text-gray-700 dark:text-gray-300 hover:text-blue-500 font-bold"
+              className="text-gray-700 dark:text-gray-400 hover:text-blue-500 font-bold"
               onClick={() => setMenuOpen(false)}
             >
               {link.title}
@@ -130,7 +130,7 @@ const Navbar = ({ showNav }: { showNav?: boolean }) => {
             </Button>
           </Link>
           <Link to="/signup">
-            <Button className="w-full text-white font-bold rounded-md bg-gray-900">
+            <Button className="w-full text-white font-bold rounded-md bg-gray-900 hover:text-gray-600">
               Get Started
             </Button>
           </Link>
