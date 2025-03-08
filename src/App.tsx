@@ -21,6 +21,7 @@ import InstructorLayout from "@/components/Dashboard/Instructor/components/Instr
 import Earnings from "@/components/Dashboard/Instructor/pages/Earnings.tsx"
 import InstructorHome from "@/components/Dashboard/Instructor/pages/InstructorHome.tsx"
 import InstructorCourses from "@/components/Dashboard/Instructor/pages/InstructorCourses.tsx"
+import SingleCourse from "@/components/Dashboard/Instructor/pages/SingleCourse.tsx"
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
         <Route path="earnings" element={<Earnings />} />
         <Route index element={<InstructorHome />} />
         <Route path="courses" element={<InstructorCourses />} />
+        <Route path="course1" element={<SingleCourse />} />                    {/* Justin you go change this stuff to the course/id when picked by the user */}
       </Route>
 
       <Route path="/courses" element={<Courses />} />

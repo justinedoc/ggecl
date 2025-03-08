@@ -1,17 +1,17 @@
-import { Search, ChevronLeft, ChevronRight } from "lucide-react";
+import { Search, ChevronLeft, ChevronRight, Star, Award } from "lucide-react";
 import { useState } from "react";
 
 const courses = [
-  { id: 1, title: "Ultimate Design App Training", lesson: "1. Introduction", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", progress: 100 },
-  { id: 2, title: "React for Beginners", lesson: "2. JSX & Components", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", progress: 75 },
-  { id: 3, title: "Advanced UI/UX Principles", lesson: "3. Wireframing", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", progress: 100 },
-  { id: 4, title: "Full-Stack Development", lesson: "4. Backend Basics", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", progress: 90 },
-  { id: 5, title: "Building Scalable Systems", lesson: "5. Architecture", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", progress: 30 },
-  { id: 6, title: "JavaScript Algorithms", lesson: "6. Data Structures", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", progress: 100 },
-  { id: 7, title: "Mobile App Development", lesson: "7. React Native", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", progress: 60 },
-  { id: 8, title: "Cybersecurity Essentials", lesson: "8. Encryption", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", progress: 100 },
-  { id: 9, title: "AI & Machine Learning", lesson: "9. Neural Networks", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", progress: 40 },
-  { id: 10, title: "Cloud Computing Basics", lesson: "10. AWS & GCP", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", progress: 100 },
+  { id: 1, category: "Comb", title: "Ultimate Design App Training", lesson: "1. Introduction", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", stars: "4.5", users: "10", amount: "$89.00", progress: 100 },
+  { id: 2, category: "Comb", title: "React for Beginners", lesson: "2. JSX & Components", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", stars: "4.5", users: "10", amount: "$89.00", progress: 75 },
+  { id: 3, category: "Comb", title: "Advanced UI/UX Principles", lesson: "3. Wireframing", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", stars: "4.5", users: "10", amount: "$89.00", progress: 100 },
+  { id: 4, category: "Comb", title: "Full-Stack Development", lesson: "4. Backend Basics", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", stars: "4.5", users: "10", amount: "$89.00", progress: 90 },
+  { id: 5, category: "Comb", title: "Building Scalable Systems", lesson: "5. Architecture", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", stars: "4.5", users: "10", amount: "$89.00", progress: 30 },
+  { id: 6, category: "Comb", title: "JavaScript Algorithms", lesson: "6. Data Structures", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", stars: "4.5", users: "10", amount: "$89.00", progress: 100 },
+  { id: 7, category: "Comb", title: "Mobile App Development", lesson: "7. React Native", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", stars: "4.5", users: "10", amount: "$89.00", progress: 60 },
+  { id: 8, category: "Comb", title: "Cybersecurity Essentials", lesson: "8. Encryption", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", stars: "4.5", users: "10", amount: "$89.00", progress: 100 },
+  { id: 9, category: "Comb", title: "AI & Machine Learning", lesson: "9. Neural Networks", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", stars: "4.5", users: "10", amount: "$89.00", progress: 40 },
+  { id: 10, category: "Comb", title: "Cloud Computing Basics", lesson: "10. AWS & GCP", image: "https://i.ytimg.com/vi/e_dv7GBHka8/maxresdefault.jpg", stars: "4.5", users: "10", amount: "$89.00", progress: 100 },
 ];
 
 const ITEMS_PER_PAGE = 8;
@@ -85,26 +85,26 @@ const InstructorCourses = () => {
           <div key={course.id} className="relative border border-gray-200 dark:border-gray-800 shadow-md rounded-lg overflow-hidden min-w-60 mt-5">
             <img src={course.image} alt={course.title} className="w-full h-40 object-cover" />
             <div className="p-4">
+              <p className="w-max text-purple-600 rounded-full px-2 border bg-purple-100 text-sm items-center justify-center">{course.category}</p>
               <p className="font-semibold text-gray-900 dark:text-gray-100">{course.title}</p>
-              <p className="text-sm text-gray-500 dark:text-gray-400">{course.lesson}</p>
               <div className="flex items-center justify-between mt-3">
                 
-                <button
-                  className={`flex items-center justify-center gap-2 py-2 px-4 rounded-md font-semibold transition-all  ${course.progress === 100 ? "btn w-full text-gray-50" : "dark:bg-gray-800 dark:hover:bg-gray-700 bg-gray-200 hover:bg-gray-300"}`}
-                >
-                  {course.progress === 100 ? "Watch Again" : "Continue"}
-                </button>
-                {course.progress !== 100 && (
-                  <div className="text-green-600 text-sm">{course.progress}% completed</div>
-                )}
+               <hr />
+              <div className="w-full"> 
+                <hr />
+                 <div className="py-2 flex flex-row gap-4 justify-between">
+                    <p className="flex flex-row gap-2 items-center"><Star size="14" className=""/><span>{course.stars}</span></p>
+                    
+                    <div className="">
+                      <p className="flex flex-row gap-2 items-center"><Award size="14" /> <span className="">{course.users}</span><span className="">students</span></p>
+                     
+                    </div>
+                 </div>
+                <hr />
+               </div>
               </div>
-              {course.progress !== 100 ? <div className="w-full bg-gray-300 dark:bg-gray-700 h-1 rounded-full mt-4 absolute bottom-0 right-0 left-0">
-                <div
-                  className="h-1 rounded-full bg-green-600"
-                  style={{ width: `${course.progress}%` }}
-                ></div>
-              </div> : ""}
             </div>
+              <p className="mb-5 ml-5">{course.amount}</p>
           </div>
         ))}
       </div>

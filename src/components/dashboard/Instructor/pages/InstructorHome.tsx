@@ -1,4 +1,3 @@
-import React from "react";
 import {
   FaPlayCircle,
   FaCheckSquare,
@@ -6,7 +5,6 @@ import {
   FaUserCircle,
   FaCreditCard,
   FaLayerGroup,
-  FaStar,
 } from "react-icons/fa";
 import {
   LineChart,
@@ -19,6 +17,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import profileImg from "@/assets/images/Frame 427319048.png";
+import CourseRating from "../components/CourseRating";
 
 const recentActivity = [
   {
@@ -32,6 +31,12 @@ const recentActivity = [
     action: "gave a 5-star rating",
     course: "2021 UI/UX design with Figma",
     time: "5 mins ago",
+  },
+  {
+    user: "Kevin",
+    action: "commented on your lecture",
+    course: "What is UI in Figma?",
+    time: "Just now",
   },
   {
     user: "Sraboni",
@@ -60,77 +65,116 @@ const profileViews = [
   { day: "Sun", views: 750 },
 ];
 
+const features = [
+  {
+    id: 1,
+    amount: "957",
+    info: "Enrolled Courses",
+    icon: (
+      <FaPlayCircle
+        className="text-blue-600 bg-blue-200 p-2 rounded-sm"
+        size={40}
+      />
+    ),
+    border: "border-blue-300 dark:border-blue-600",
+  },
+  {
+    id: 2,
+    amount: "967",
+    info: "Mid Courses",
+    icon: (
+      <FaCheckSquare
+        className="text-purple-600 bg-purple-200 p-2 rounded-sm"
+        size={40}
+      />
+    ),
+    border: "border-purple-300 dark:border-purple-600",
+  },
+  {
+    id: 3,
+    amount: "657",
+    info: "Unenrolled Courses",
+    icon: (
+      <FaAward
+        className="text-green-600 bg-green-200 p-2 rounded-sm"
+        size={40}
+      />
+    ),
+    border: "border-green-300 dark:border-green-600",
+  },
+  {
+    id: 4,
+    amount: "789",
+    info: "Total Users",
+    icon: (
+      <FaUserCircle
+        className="text-orange-600 bg-orange-200 p-2 rounded-sm"
+        size={40}
+      />
+    ),
+    border: "border-orange-300 dark:border-orange-600",
+  },
+  {
+    id: 5,
+    amount: "325",
+    info: "Payments Received",
+    icon: (
+      <FaCreditCard
+        className="text-pink-600 bg-pink-200 p-2 rounded-sm"
+        size={40}
+      />
+    ),
+    border: "border-pink-300 dark:border-pink-600",
+  },
+  {
+    id: 6,
+    amount: "412",
+    info: "Total Modules",
+    icon: (
+      <FaLayerGroup
+        className="text-red-600 bg-red-200 p-2 rounded-sm"
+        size={40}
+      />
+    ),
+    border: "border-red-300 dark:border-red-600",
+  },
+];
+
 const InstructorHome = () => {
   return (
     <div className="whitespace-nowrap p-4">
       {/* Stats Section */}
       <div className="p-4">
+        {/* First Row */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 mt-10 gap-4">
-          {/* First Row */}
-          <div className="flex flex-row gap-4 items-center border shadow-md border-blue-300 dark:border-blue-600 rounded-md p-3">
-            <FaPlayCircle
-              className="text-blue-600 bg-blue-200 p-2 rounded-sm"
-              size={40}
-            />
-            <div className="text-gray-700 dark:text-gray-300">
-              <p className="text-xl">957</p>
-              <p className="text-sm">Enrolled Courses</p>
+          {features.slice(0, 3).map((feature) => (
+            <div
+              key={feature.id}
+              className={`flex flex-row gap-4 items-center border shadow-md ${feature.border} rounded-md p-3`}
+            >
+              {feature.icon}
+              <div className="text-gray-700 dark:text-gray-300  whitespace-normal">
+                <p className="text-xl">{feature.amount}</p>
+                <p className="text-sm">{feature.info}</p>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-row gap-4 items-center border shadow-md border-purple-300 dark:border-purple-600 rounded-md p-3">
-            <FaCheckSquare
-              className="text-purple-600 bg-purple-200 p-2 rounded-sm"
-              size={40}
-            />
-            <div className="text-gray-700 dark:text-gray-300">
-              <p className="text-xl">957</p>
-              <p className="text-sm">Enrolled Courses</p>
-            </div>
-          </div>
-          <div className="flex flex-row gap-4 items-center border shadow-md border-green-300 dark:border-green-600 rounded-md p-3">
-            <FaAward
-              className="text-green-600 bg-green-200 p-2 rounded-sm"
-              size={40}
-            />
-            <div className="text-gray-700 dark:text-gray-300">
-              <p className="text-xl">957</p>
-              <p className="text-sm">Enrolled Courses</p>
-            </div>
-          </div>
+          ))}
         </div>
 
         {/* Second Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 mt-4 gap-4">
-          <div className="flex flex-row gap-4 items-center border shadow-md border-orange-300 dark:border-orange-600 rounded-md p-3">
-            <FaUserCircle
-              className="text-orange-600 bg-orange-200 p-2 rounded-sm"
-              size={40}
-            />
-            <div className="text-gray-700 dark:text-gray-300">
-              <p className="text-xl">957</p>
-              <p className="text-sm">Enrolled Courses</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 mt-4 gap-4 whitespace-normal">
+          {features.slice(3, 6).map((feature) => (
+            <div
+              key={feature.id}
+              className={`flex flex-row gap-4 items-center border shadow-md ${feature.border} rounded-md p-3  whitespace-normal`}
+            >
+              {feature.icon}
+              <div className="text-gray-700 dark:text-gray-300  whitespace-normal">
+                <p className="text-xl">{feature.amount}</p>
+                <p className="text-sm">{feature.info}</p>
+              </div>
             </div>
-          </div>
-          <div className="flex flex-row gap-4 items-center border shadow-md border-pink-300 dark:border-pink-600 rounded-md p-3">
-            <FaCreditCard
-              className="text-pink-600 bg-pink-200 p-2 rounded-sm"
-              size={40}
-            />
-            <div className="text-gray-700 dark:text-gray-300">
-              <p className="text-xl">957</p>
-              <p className="text-sm">Enrolled Courses</p>
-            </div>
-          </div>
-          <div className="flex flex-row gap-4 items-center border shadow-md border-red-300 dark:border-red-600 rounded-md p-3">
-            <FaLayerGroup
-              className="text-red-600 bg-red-200 p-2 rounded-sm"
-              size={40}
-            />
-            <div className="text-gray-700 dark:text-gray-300">
-              <p className="text-xl">957</p>
-              <p className="text-sm">Enrolled Courses</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
@@ -165,11 +209,11 @@ const InstructorHome = () => {
         <div className="bg-white dark:bg-gray-900 shadow-md p-4 rounded-md">
           <h3 className="text-lg font-semibold">Recent Activity</h3>
           {recentActivity.map((activity, index) => (
-            <div key={index} className="border-b py-2">
-              <p className="text-sm">
-                <span className="font-semibold">{activity.user}</span>{" "}
+            <div key={index} className="border-b py-2 overflow-x-scroll lm">
+              <p className="text-sm  overflow-x-scroll lm">
+                <span className="font-semibold  overflow-x-scroll lm">{activity.user}</span>{" "}
                 {activity.action}{" "}
-                <span className="text-blue-500">{activity.course}</span>
+                <span className="text-blue-500  overflow-x-scroll lm">{activity.course}</span>
               </p>
               <p className="text-xs text-gray-400">{activity.time}</p>
             </div>
@@ -215,130 +259,18 @@ const InstructorHome = () => {
       <div>
         <div className="grid grid-cols-2 md:gap-4 w-full justify-between">
           {/* Overall Course Rating */}
-          <div className="mt-6 bg-white dark:bg-gray-900 shadow-md p-4 rounded-md w-full">
-            <div className="flex justify-between items-center">
-              <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300">
-                Overall Course Rating
-              </h3>
-              <span className="text-gray-500 text-sm">This week</span>
-            </div>
-
-            <div className="bg-gray-100 dark:bg-gray-800 rounded-md p-4 mt-3 flex flex-col items-center justify-start">
-              <p className="text-3xl font-bold text-gray-900 dark:text-white">
-                4.6
-              </p>
-              <div className="flex text-yellow-500 mt-1">
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar className="text-gray-400" />
-              </div>
-              <p className="text-gray-500 text-sm">Overall Rating</p>
-            </div>
-
-            <div className="mt-4 space-y-2">
-              {/* 5 Star Rating */}
-              <div className="flex items-center gap-2">
-                <div className="flex text-yellow-500">
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                  <div
-                    className="bg-blue-500 h-2 rounded-full"
-                    style={{ width: "56%" }}
-                  ></div>
-                </div>
-                <span className="text-gray-700 dark:text-gray-300 text-sm">
-                  56%
-                </span>
-              </div>
-
-              {/* 4 Star Rating */}
-              <div className="flex items-center gap-2">
-                <div className="flex text-yellow-500">
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar className="text-gray-400" />
-                </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                  <div
-                    className="bg-blue-500 h-2 rounded-full"
-                    style={{ width: "37%" }}
-                  ></div>
-                </div>
-                <span className="text-gray-700 dark:text-gray-300 text-sm">
-                  37%
-                </span>
-              </div>
-
-              {/* 3 Star Rating */}
-              <div className="flex items-center gap-2">
-                <div className="flex text-yellow-500">
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar className="text-gray-400" />
-                  <FaStar className="text-gray-400" />
-                </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                  <div
-                    className="bg-blue-500 h-2 rounded-full"
-                    style={{ width: "8%" }}
-                  ></div>
-                </div>
-                <span className="text-gray-700 dark:text-gray-300 text-sm">
-                  8%
-                </span>
-              </div>
-
-              {/* 2 Star Rating */}
-              <div className="flex items-center gap-2">
-                <div className="flex text-yellow-500">
-                  <FaStar />
-                  <FaStar />
-                  <FaStar className="text-gray-400" />
-                  <FaStar className="text-gray-400" />
-                  <FaStar className="text-gray-400" />
-                </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                  <div
-                    className="bg-blue-500 h-2 rounded-full"
-                    style={{ width: "1%" }}
-                  ></div>
-                </div>
-                <span className="text-gray-700 dark:text-gray-300 text-sm">
-                  1%
-                </span>
-              </div>
-
-              {/* 1 Star Rating */}
-              <div className="flex items-center gap-2">
-                <div className="flex text-yellow-500">
-                  <FaStar />
-                  <FaStar className="text-gray-400" />
-                  <FaStar className="text-gray-400" />
-                  <FaStar className="text-gray-400" />
-                  <FaStar className="text-gray-400" />
-                </div>
-                <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                  <div
-                    className="bg-blue-500 h-2 rounded-full"
-                    style={{ width: "0.5%" }}
-                  ></div>
-                </div>
-                <span className="text-gray-700 dark:text-gray-300 text-sm">
-                  &lt;1%
-                </span>
-              </div>
-            </div>
-          </div>
+          <div className="">
+      <CourseRating
+        overallRating={4.6}
+        ratingsDistribution={[
+          { stars: 5, percentage: 56 },
+          { stars: 4, percentage: 37 },
+          { stars: 3, percentage: 8 },
+          { stars: 2, percentage: 1 },
+          { stars: 1, percentage: 0.5 },
+        ]}
+      />
+    </div>
           {/* Course Overview */}
           <div className="mt-10 bg-white dark:bg-gray-900 shadow-md p-4 rounded-md">
             <h3 className="text-lg font-semibold">Course Overview</h3>

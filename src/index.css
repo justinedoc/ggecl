@@ -138,6 +138,10 @@ input[type="date"] {
   margin-top: -5px;
 }
 
+.lm::-webkit-scrollbar{
+  display: none;
+}
+
 @keyframes spin {
   from {
     transform: rotate(0deg);
