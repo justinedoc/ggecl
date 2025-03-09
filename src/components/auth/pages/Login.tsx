@@ -1,92 +1,113 @@
-import { useState, useEffect } from 'react';
-import { Eye, EyeOff, Lock, Mail } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { FaGoogle, FaSun, FaMoon, FaArrowRight } from 'react-icons/fa';
+import { useState } from "react";
+import { Eye, EyeOff, Lock, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
+import { FaGoogle, FaArrowRight, FaUpload } from "react-icons/fa";
+import LoginPopup from "@/components/ui/LoginPopup.tsx";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [darkMode, setDarkMode] = useState<boolean>(
-    localStorage.getItem("theme") === "dark"
-  );
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
-    useEffect(() => {
-      if (darkMode) {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-      }
-    }, [darkMode]);
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+
 
   return (
     <div className="relative min-h-screen grid lg:grid-cols-2 overflow-hidden dark:bg-gray-900">
       <div className="absolute top-10 left-20 w-56 h-56 bg-blue-500/20 rounded-full blur-3xl"></div>
       <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-green-400/20 rounded-full blur-2xl"></div>
 
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className="absolute md:top-10 top-3 md:right-20 right-5 p-2 rounded-full text-gray-800 dark:text-gray-300 dark:bg-gray-800 bg-gray-200 dark:hover:bg-gray-700 hidden"
-            >
-              {darkMode ? <FaSun size={20} /> : <FaMoon size={20} />}
-            </button>
-            <Link to="/" className=' absolute top-5 left-5'>
-      <img src="src/assets/images/LOGO.png" className='w-14 h-14 rounded-full p-1 bg-gray-800 hidden ' alt="" />
-      </Link>
+
       <div className="flex flex-col justify-center items-center p-6 sm:p- z-10 mt-8">
         <div className="w-full max-w-md space-y-5">
           <div className="text-center mb-5">
-            <div className="flex flex-col items-center gap-2 group">
-              <h1 className="text-2xl font-bold mt-2">Login</h1>
-              <p className="text-base-content/60">Get started with your free account</p>
-            </div>
+            <h1 className="text-2xl font-bold mt-2">Login</h1>
+            <p className="text-base-content/60">
+              Login to your student account
+            </p>
           </div>
 
           <form className="space-y-5">
-
+            {/* Email Input */}
             <div className="form-control">
-              <label htmlFor="email" className="label">
+              <label htmlFor="email" className="label mb-2">
                 <span className="label-text font-medium">Email</span>
               </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="size-5 text-base-content/40" />
-                </div>
+              <div className="relative  mt-2">
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-base-content/40 size-5" />
                 <input
                   type="email"
-                  className={`input input-bordered w-full pl-10 py-2 rounded-md dark:bg-gray-800 outline-none`}
+                  className="input input-bordered w-full pl-10 py-2 rounded-md dark:bg-gray-800 outline-none shadow-md"
                   placeholder="joshdickon@gmail.com"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   id="email"
                 />
               </div>
             </div>
 
+            {/* Custom Image Upload */}
             <div className="form-control">
-              <label htmlFor="password" className="label">
+              <label className="label mb-2">
+                <span className="label-text font-medium">Upload Image</span>
+              </label>
+              <div className="relative flex items-center gap-3 mt-2">
+                <label
+                  htmlFor="image"
+                  className="flex items-center cursor-pointer gap-2 bg-white dark:bg-gray-800 px-4 py-2 rounded-md shadow-md hover:bg-gray-300 dark:hover:bg-gray-700"
+                >
+                  <FaUpload className="text-gray-600 dark:text-gray-300" />
+                  <span className="text-sm text-gray-700 dark:text-gray-300">
+                    Upload Image
+                  </span>
+                </label>
+                <input
+                  type="file"
+                  accept="image/*"
+                  id="image"
+                  className="hidden"
+                  onChange={handleImageChange}
+                />
+              </div>
+              {imagePreview && (
+                <img
+                  src={imagePreview}
+                  alt="Preview"
+                  className="mt-2 w-24 h-24 object-cover rounded-md"
+                />
+              )}
+            </div>
+
+            {/* Password Input */}
+            <div className="form-control">
+              <label htmlFor="password" className="label mb-2">
                 <span className="label-text font-medium">Password</span>
               </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="size-5 text-base-content/40" />
-                </div>
+              <div className="relative mt-2">
+                <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-base-content/40 size-5" />
                 <input
-                  type={showPassword ? 'text' : 'password'}
-                  className={`input input-bordered w-full  py-2 rounded-md pl-10 dark:bg-gray-800 outline-none`}
+                  type={showPassword ? "text" : "password"}
+                  className="input input-bordered w-full pl-10 py-2 rounded-md dark:bg-gray-800 outline-none shadow-md"
                   placeholder="••••••••"
                   value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, password: e.target.value })
+                  }
                   id="password"
                 />
                 <button
                   type="button"
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2"
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
@@ -98,23 +119,28 @@ const Login = () => {
               </div>
             </div>
 
-            <button type="submit" className="btn btn-primary mt-4 py-2 px-4 w-max rounded-md text-white flex gap-2 items-center">
-             <span> Login</span> <FaArrowRight />
+            <button
+              type="submit"
+              className="btn btn-primary mt-4 py-2 px-4 w-max rounded-md text-white flex gap-2 items-center"
+            >
+              <span>Login</span> <FaArrowRight />
             </button>
           </form>
-<hr />
-          <div className="mt-6 flex justify-center space-x-4 w-full">
-          <button 
-  className="btn btn-outline btn-google flex items-center justify-center space-x-2 w-full mt-2 py-2 rounded-md text-white"
->
-  <FaGoogle className="text-xl" />
-  <span>Google</span>
-</button>
+
+          <hr />
+
+          {/* Google Login */}
+          <div className="mt-6 flex justify-center w-full">
+            <button className="btn btn-outline btn-google flex items-center justify-center w-full py-2 rounded-md text-white">
+              <FaGoogle className="text-xl" />
+              <span>Google</span>
+            </button>
           </div>
 
+          {/* Signup Link */}
           <div className="text-center mt-4">
             <p className="text-base-content/60">
-              Already have an account?{' '}
+              Already have an account?{" "}
               <Link to="/signup" className="link link-primary">
                 Sign up
               </Link>
@@ -123,9 +149,14 @@ const Login = () => {
         </div>
       </div>
 
-      <Link to="/" className='h-screen max-w-7xl md:block hidden igo'>
+      <Link to="/" className="h-screen max-w-7xl md:block hidden">
         <img src="src/assets/images/logoforsignup.png" alt="" />
       </Link>
+
+
+      {/* <div className="relative min-h-screen grid lg:grid-cols-2 overflow-hidden dark:bg-gray-900"> */}
+      <LoginPopup />
+    {/* </div> */}
     </div>
   );
 };
