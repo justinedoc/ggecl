@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
-import { FaGoogle, FaArrowRight, FaUpload } from "react-icons/fa";
+import { FaGoogle, FaArrowRight } from "react-icons/fa";
 import LoginPopup from "@/components/ui/LoginPopup.tsx";
+import AuthDivider from "../ui/AuthDivider";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,21 +11,12 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
-
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setImagePreview(URL.createObjectURL(file));
-    }
-  };
 
 
   return (
     <div className="relative min-h-screen grid lg:grid-cols-2 overflow-hidden dark:bg-gray-900">
       <div className="absolute top-10 left-20 w-56 h-56 bg-blue-500/20 rounded-full blur-3xl"></div>
       <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-green-400/20 rounded-full blur-2xl"></div>
-
 
       <div className="flex flex-col justify-center items-center p-6 sm:p- z-10 mt-8">
         <div className="w-full max-w-md space-y-5">
@@ -35,7 +27,7 @@ const Login = () => {
             </p>
           </div>
 
-          <form className="space-y-5">
+          <form className="space-y-3">
             {/* Email Input */}
             <div className="form-control">
               <label htmlFor="email" className="label mb-2">
@@ -54,38 +46,6 @@ const Login = () => {
                   id="email"
                 />
               </div>
-            </div>
-
-            {/* Custom Image Upload */}
-            <div className="form-control">
-              <label className="label mb-2">
-                <span className="label-text font-medium">Upload Image</span>
-              </label>
-              <div className="relative flex items-center gap-3 mt-2">
-                <label
-                  htmlFor="image"
-                  className="flex items-center cursor-pointer gap-2 bg-white dark:bg-gray-800 px-4 py-2 rounded-md shadow-md hover:bg-gray-300 dark:hover:bg-gray-700"
-                >
-                  <FaUpload className="text-gray-600 dark:text-gray-300" />
-                  <span className="text-sm text-gray-700 dark:text-gray-300">
-                    Upload Image
-                  </span>
-                </label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  id="image"
-                  className="hidden"
-                  onChange={handleImageChange}
-                />
-              </div>
-              {imagePreview && (
-                <img
-                  src={imagePreview}
-                  alt="Preview"
-                  className="mt-2 w-24 h-24 object-cover rounded-md"
-                />
-              )}
             </div>
 
             {/* Password Input */}
@@ -119,19 +79,24 @@ const Login = () => {
               </div>
             </div>
 
+            <div className="flex my-2 justify-end">
+              <Link to="/forgot-password" className="underline text-sm w-fit">
+                Forgot password?
+              </Link>
+            </div>
+
             <button
               type="submit"
-              className="btn btn-primary mt-4 py-2 px-4 w-max rounded-md text-white flex gap-2 items-center"
+              className="btn btn-primary mt-4 py-2 rounded-md text-white flex gap-2 items-center w-full justify-center"
             >
               <span>Login</span> <FaArrowRight />
             </button>
           </form>
 
-          <hr />
-
+          <AuthDivider />
           {/* Google Login */}
           <div className="mt-6 flex justify-center w-full">
-            <button className="btn btn-outline btn-google flex items-center justify-center w-full py-2 rounded-md text-white">
+            <button className="btn btn-outline btn-google flex items-center justify-center gap-2 w-full py-2 rounded-md text-white">
               <FaGoogle className="text-xl" />
               <span>Google</span>
             </button>
@@ -141,7 +106,7 @@ const Login = () => {
           <div className="text-center mt-4">
             <p className="text-base-content/60">
               Already have an account?{" "}
-              <Link to="/signup" className="link link-primary">
+              <Link to="/signup" className="underline underline-primary">
                 Sign up
               </Link>
             </p>
@@ -153,10 +118,9 @@ const Login = () => {
         <img src="src/assets/images/logoforsignup.png" alt="" />
       </Link>
 
-
       {/* <div className="relative min-h-screen grid lg:grid-cols-2 overflow-hidden dark:bg-gray-900"> */}
       <LoginPopup />
-    {/* </div> */}
+      {/* </div> */}
     </div>
   );
 };

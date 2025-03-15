@@ -17,6 +17,7 @@ import {
   selectFormData,
   updateFormData,
 } from "@/app/features/auth/student/signup/SignupTabsPagination";
+import AuthDivider from "../ui/AuthDivider";
 
 const SignupSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -151,6 +152,8 @@ export default function SignupForm(): JSX.Element {
       >
         {isSubmitting ? "Processing..." : "Proceed"}
       </Button>
+
+      <AuthDivider />
 
       <GoogleSigninBtn>Sign up with Google</GoogleSigninBtn>
       <p className="text-sm text-center">
