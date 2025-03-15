@@ -32,6 +32,7 @@ import AdminSettings from "@/components/Dashboard/admin/pages/AdminSettings"
 import Payments from "@/components/Dashboard/admin/pages/Payments"
 import CourseManagement from "@/components/Dashboard/admin/pages/CourseManagement"
 import Analytics from "@/components/Dashboard/admin/pages/Analytics"
+import EmailVerification from "@//components/landing/pages/EmailVerification.tsx"
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path="signup" element={<Signup />} />
         <Route path="instructor" element={<Instructor />} />
         <Route path="courses/:id" element={<CoursesPage />} />
+        <Route path="emailverification" element={<EmailVerification />} />
 
 
         
