@@ -1,12 +1,13 @@
 import { footerNavs } from "../constants/FooterNavs";
 import { socialNavs } from "../constants/SocialNavs";
+import lightImg from "@/assets/images/LOGO.png"
 
 function Footer() {
   return (
     <footer className="w-full p-5 gap-10 md:gap-0 md:p-12 grid grid-cols-1 md:grid-cols-4 text-white dark:border-t border-blue-300/20 py-10 px-4 sm:px-6 md:px-16 bg-gray-900">
       <main className="flex flex-col md:min-h-[15rem] col-span-1">
         <img
-          src="src/assets/images/LOGO.png"
+          src={lightImg}
           alt="logo"
           loading="lazy"
           width={55}

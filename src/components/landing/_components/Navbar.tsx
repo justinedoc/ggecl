@@ -4,6 +4,8 @@ import { FaBars, FaTimes } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import SearchBar from "@/components/ui/SearchBar";
 import { Moon, ShoppingCart, Sun } from "lucide-react";
+import lightImg from "@/assets/images/LOGO.png"
+import darkImg from "@/assets/images/LOGO-dark.png"
 
 interface NavLink {
   title: string;
@@ -35,8 +37,8 @@ const Navbar = ({ showNav }: { showNav?: boolean }) => {
   }, [darkMode]);
 
   const logoSrc = darkMode
-    ? "src/assets/images/LOGO.png"
-    : "src/assets/images/LOGO-dark.png";
+    ? lightImg
+    : darkImg;
 
   return (
     <nav className="sticky top-0 left-0 w-full bg-white dark:bg-gray-900 shadow-sm z-50 transition-all duration-300 ease-in-out py-3">

@@ -5,7 +5,7 @@ import { FaGoogle, FaArrowRight } from "react-icons/fa";
 import LoginPopup from "../components/LoginPopup.tsx";
 import uiImg from "@/assets/images/logoforsignup.png"
 
-const InstructorLogin = () => {
+const Adminlogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
@@ -24,7 +24,7 @@ const InstructorLogin = () => {
           <div className="text-center mb-5">
             <h1 className="text-2xl font-bold mt-2">Login</h1>
             <p className="text-base-content/60">
-              Login to your Instructor account
+              Login to your Admin account
             </p>
           </div>
 
@@ -130,6 +130,7 @@ const InstructorLogin = () => {
         <img src={uiImg} alt="" />
       </div>
 
+
       {/* <div className="relative min-h-screen grid lg:grid-cols-2 overflow-hidden dark:bg-gray-900"> */}
       <LoginPopup />
     {/* </div> */}
@@ -137,4 +138,4 @@ const InstructorLogin = () => {
   );
 };
 
-export default InstructorLogin;
+export default Adminlogin;

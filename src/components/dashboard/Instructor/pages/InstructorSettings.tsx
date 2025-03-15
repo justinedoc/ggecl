@@ -153,8 +153,8 @@ const InstructorSettings = () => {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div className="flex flex-col gap-4">
+            <div className="grid grid-cols-1 w-full md:grid-cols-3 md:gap-4">
+              <div className="flex flex-col gap-4 w-full">
                 <label
                   className="text-gray-600 dark:text-gray-300"
                   htmlFor="facebook"
@@ -251,17 +251,17 @@ const InstructorSettings = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-4 w-full">
                 <label
                   className="text-gray-600 dark:text-gray-300"
                   htmlFor="name"
                 >
                   Youtube
                 </label>
-                <div className="flex flex-col md:flex-row gap-4 relative">
+                <div className="flex flex-col md:flex-row gap-4 relative w-full">
                   <input
                     placeholder="First Name"
-                    className="input-field2 ml-8"
+                    className="input-field2 ml-8 w-full"
                     type="url"
                     id="you"
                   />
@@ -275,8 +275,8 @@ const InstructorSettings = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-10 items-start mt-10 mb-10 pl-2 pr-2">
-        <div className="col-span-2 flex flex-col gap-6 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-10 items-start mt-10 mb-10 pl-2 pr-2">
+        <div className="col-span-1 md:col-span-2 flex flex-col gap-6 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md">
           <p className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
             Notification
           </p>
@@ -307,7 +307,7 @@ const InstructorSettings = () => {
         </div>
 
         {/* Password Change Form */}
-        <form className="col-span-2 p-4 flex flex-col gap-6 w-full col-span-22  bg-white dark:bg-gray-900 rounded-lg shadow-md">
+        <form className="col-span-1 md:col-span-2 p-4 flex flex-col gap-6 w-full col-span-22  bg-white dark:bg-gray-900 rounded-lg shadow-md">
           <p className="text-2xl font-bold">Change Password</p>
 
           {["Current Password", "New Password", "Confirm Password"].map(

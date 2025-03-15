@@ -23,6 +23,15 @@ import InstructorHome from "@/components/Dashboard/Instructor/pages/InstructorHo
 import InstructorCourses from "@/components/Dashboard/Instructor/pages/InstructorCourses.tsx"
 import SingleCourse from "@/components/Dashboard/Instructor/pages/SingleCourse.tsx"
 import InstructorLogin from "@/components/Dashboard/Instructor/pages/InstructorLogin"
+import Chat from "@/components/Dashboard/Instructor/pages/Chat"
+import AdminLayout from "@/components/Dashboard/admin/components/AdminLayout"
+import AdminHome from "@/components/Dashboard/admin/pages/AdminHome"
+import Adminlogin from "@/components/Dashboard/admin/pages/Adminlogin"
+import StudentLogin from "@/components/Dashboard/students/pages/StudentLogin"
+import AdminSettings from "@/components/Dashboard/admin/pages/AdminSettings"
+import Payments from "@/components/Dashboard/admin/pages/Payments"
+import CourseManagement from "@/components/Dashboard/admin/pages/CourseManagement"
+import Analytics from "@/components/Dashboard/admin/pages/Analytics"
 
 function App() {
   return (
@@ -35,6 +44,13 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/instructor" element={<Instructor />} />
         <Route path="/courses/:id" element={<CoursesPage />} />
+
+
+        
+      {/* Login routes for all accounts */}
+      <Route path="/instructor/login" element={<InstructorLogin />} />
+      <Route path="/admin/login" element={<Adminlogin />} />
+      <Route path="/student/login" element={<StudentLogin />} />
       </Route>
 
       {/* Dashboard routes  */}
@@ -52,11 +68,30 @@ function App() {
         <Route path="mycourses" element={<CoursesDetails />} />
         <Route path="settings" element={<InstructorSettings />} />
         <Route path="earnings" element={<Earnings />} />
-        <Route path="login" element={<InstructorLogin />} />             {/* Put this login where it is suppose to be bro */}
         <Route index element={<InstructorHome />} />
         <Route path="courses" element={<InstructorCourses />} />
+        <Route path="chat" element={<Chat />} />
         <Route path="course1" element={<SingleCourse />} />                    {/* Justin you go change this stuff to the course/id when picked by the user */}
       </Route>
+
+
+
+      <Route path="/admin/dashboard" element={<AdminLayout />}>
+      <Route index element={<AdminHome />} />      
+      <Route path="settings" element={<AdminSettings />} />      
+      <Route path="payments" element={<Payments />} />      
+      <Route path="courses" element={<CourseManagement />} />      
+      <Route path="analytics" element={<Analytics />} />      
+      </Route>
+
+
+
+
+
+
+
+
+
 
       <Route path="/courses" element={<Courses />} />
       <Route path="*" element={<NotFound />} />
