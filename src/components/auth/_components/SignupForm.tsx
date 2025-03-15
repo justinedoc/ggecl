@@ -18,6 +18,7 @@ import {
   updateFormData,
 } from "@/app/features/auth/student/signup/SignupTabsPagination";
 import AuthDivider from "../ui/AuthDivider";
+import { cn } from "@/lib/utils";
 
 const SignupSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -82,7 +83,7 @@ export default function SignupForm(): JSX.Element {
   return (
     <form
       onSubmit={handleSubmit(createAcc)}
-      className="flex flex-col gap-6 w-full md:mt-5 md:p-5"
+      className="flex flex-col gap-4 w-full md:mt-5 md:p-5"
     >
       <FormHead title="Create an account">
         Already have an account? <CustomLink to="/login">Login</CustomLink>
@@ -94,9 +95,10 @@ export default function SignupForm(): JSX.Element {
           {...register("email")}
           type="email"
           name="email"
-          className={`border ${
-            errors.email ? "border-red-500" : "border-gray-400/30"
-          } bg-transparent w-full p-2 rounded-sm focus:ring-2 focus:ring-blue-500/30 outline-none`}
+          className={cn(
+            "bg-transparent w-full p-2 rounded-sm focus:ring-2 focus:ring-blue-300/30 outline-none shadow-sm border border-blue-300/30",
+            { "border-red-500": errors?.email }
+          )}
         />
 
         <aside className="absolute w-fit top-[2.8rem] right-2">
@@ -123,9 +125,10 @@ export default function SignupForm(): JSX.Element {
           {...register("password")}
           type={isPasswordHidden ? "password" : "text"}
           name="password"
-          className={`border ${
-            errors.password ? "border-red-500" : "border-gray-400/30"
-          } bg-transparent w-full p-2 rounded-sm focus:ring-2 focus:ring-blue-500/30 outline-none`}
+          className={cn(
+            "bg-transparent w-full p-2 rounded-sm focus:ring-2 focus:ring-blue-300/30 outline-none shadow-sm border border-blue-300/30",
+            { "border-red-500": errors?.password }
+          )}
         />
         {errors.password && (
           <p className="text-red-500 text-xs capitalize">
@@ -148,18 +151,23 @@ export default function SignupForm(): JSX.Element {
       <Button
         type="submit"
         disabled={!isPasswordValid || !isEmailValid || !isValid || isSubmitting}
-        className="bg-gray-900 border border-blue-300/30 disabled:border-0 disabled:bg-gray-600 dark:disabled:bg-gray-700 dark:text-white font-semibold hover:bg-gray-800"
+        className="bg-gray-900 border border-blue-300/30 disabled:border-0 disabled:bg-gray-400 dark:disabled:bg-gray-700 dark:text-white font-semibold hover:bg-gray-800"
       >
         {isSubmitting ? "Processing..." : "Proceed"}
       </Button>
 
       <AuthDivider />
 
-      <GoogleSigninBtn>Sign up with Google</GoogleSigninBtn>
+      <GoogleSigninBtn>Continue with Google</GoogleSigninBtn>
       <p className="text-sm text-center">
         By creating an account, you agree to GGECL's{" "}
-        <CustomLink to="https://ggecl.com/terms.html">Terms of Service</CustomLink>,{" "}
-        <CustomLink to="https://ggecl.com/terms.html">Privacy Policy</CustomLink>
+        <CustomLink to="https://ggecl.com/terms.html">
+          Terms of Service
+        </CustomLink>
+        ,{" "}
+        <CustomLink to="https://ggecl.com/terms.html">
+          Privacy Policy
+        </CustomLink>
       </p>
     </form>
   );

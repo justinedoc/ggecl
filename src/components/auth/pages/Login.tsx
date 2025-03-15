@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
-import { FaGoogle, FaArrowRight } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import LoginPopup from "@/components/ui/LoginPopup.tsx";
 import AuthDivider from "../ui/AuthDivider";
+import { FormHead } from "../ui/FormHead";
+import GoogleSigninBtn from "../ui/GoogleSigninBtn";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,7 +14,6 @@ const Login = () => {
     password: "",
   });
 
-
   return (
     <div className="relative min-h-screen grid lg:grid-cols-2 overflow-hidden dark:bg-gray-900">
       <div className="absolute top-10 left-20 w-56 h-56 bg-blue-500/20 rounded-full blur-3xl"></div>
@@ -20,14 +21,11 @@ const Login = () => {
 
       <div className="flex flex-col justify-center items-center p-6 sm:p- z-10 mt-8">
         <div className="w-full max-w-md space-y-5">
-          <div className="text-center mb-5">
-            <h1 className="text-2xl font-bold mt-2">Login</h1>
-            <p className="text-base-content/60">
-              Login to your student account
-            </p>
-          </div>
+          <FormHead title="Login Student">
+            Login to your student account to start learning
+          </FormHead>
 
-          <form className="space-y-3">
+          <form className="space-y-5">
             {/* Email Input */}
             <div className="form-control">
               <label htmlFor="email" className="label mb-2">
@@ -37,7 +35,7 @@ const Login = () => {
                 <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-base-content/40 size-5" />
                 <input
                   type="email"
-                  className="input input-bordered w-full pl-10 py-2 rounded-md dark:bg-gray-800 outline-none shadow-md"
+                  className="input input-bordered w-full pl-10 py-2 rounded-md dark:bg-gray-800 outline-none shadow-sm border border-blue-300/30"
                   placeholder="joshdickon@gmail.com"
                   value={formData.email}
                   onChange={(e) =>
@@ -57,7 +55,7 @@ const Login = () => {
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-base-content/40 size-5" />
                 <input
                   type={showPassword ? "text" : "password"}
-                  className="input input-bordered w-full pl-10 py-2 rounded-md dark:bg-gray-800 outline-none shadow-md"
+                  className="input input-bordered w-full pl-10 py-2 rounded-md dark:bg-gray-800 outline-none shadow-sm border border-blue-300/30"
                   placeholder="••••••••"
                   value={formData.password}
                   onChange={(e) =>
@@ -77,12 +75,19 @@ const Login = () => {
                   )}
                 </button>
               </div>
-            </div>
 
-            <div className="flex my-2 justify-end">
-              <Link to="/forgot-password" className="underline text-sm w-fit">
-                Forgot password?
-              </Link>
+              <div className="flex justify-between items-center mt-3">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    className="accent-[#184471]"
+                  />
+                  <span className="text-sm">Remember me</span>
+                </label>
+                <Link to="/forgot-password" className="underline text-sm w-fit">
+                  Forgot password?
+                </Link>
+              </div>
             </div>
 
             <button
@@ -95,11 +100,8 @@ const Login = () => {
 
           <AuthDivider />
           {/* Google Login */}
-          <div className="mt-6 flex justify-center w-full">
-            <button className="btn btn-outline btn-google flex items-center justify-center gap-2 w-full py-2 rounded-md text-white">
-              <FaGoogle className="text-xl" />
-              <span>Google</span>
-            </button>
+          <div className="w-full">
+            <GoogleSigninBtn>Continue with Google</GoogleSigninBtn>
           </div>
 
           {/* Signup Link */}

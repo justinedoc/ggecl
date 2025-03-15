@@ -8,7 +8,7 @@ export function CustomLink({
   to?: string;
 }) {
   return (
-    <Link to={to} className="underline text-blue-500">
+    <Link to={to} className="underline text-cyan-800">
       {children}
     </Link>
   );

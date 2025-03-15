@@ -39,18 +39,18 @@ function App() {
       {/* Landing page routes  */}
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/instructor" element={<Instructor />} />
-        <Route path="/courses/:id" element={<CoursesPage />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<Signup />} />
+        <Route path="instructor" element={<Instructor />} />
+        <Route path="courses/:id" element={<CoursesPage />} />
 
 
         
       {/* Login routes for all accounts */}
-      <Route path="/instructor/login" element={<InstructorLogin />} />
-      <Route path="/admin/login" element={<Adminlogin />} />
-      <Route path="/student/login" element={<StudentLogin />} />
+      <Route path="instructor/login" element={<InstructorLogin />} />
+      <Route path="admin/login" element={<Adminlogin />} />
+      <Route path="student/login" element={<StudentLogin />} />
       </Route>
 
       {/* Dashboard routes  */}

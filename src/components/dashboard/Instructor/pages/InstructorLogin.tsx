@@ -3,7 +3,8 @@ import { Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { FaGoogle, FaArrowRight } from "react-icons/fa";
 import LoginPopup from "../components/LoginPopup.tsx";
-import uiImg from "@/assets/images/logoforsignup.png"
+import uiImg from "@/assets/images/logoforsignup.png";
+import { FormHead } from "@/components/auth/ui/FormHead.tsx";
 
 const InstructorLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,21 +13,16 @@ const InstructorLogin = () => {
     password: "",
   });
 
-
   return (
     <div className="relative min-h-screen grid lg:grid-cols-2 overflow-hidden dark:bg-gray-900">
       <div className="absolute top-10 left-20 w-56 h-56 bg-blue-500/20 rounded-full blur-3xl"></div>
       <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-green-400/20 rounded-full blur-2xl"></div>
 
-
       <div className="flex flex-col justify-center items-center p-6 sm:p- z-10 mt-8">
         <div className="w-full max-w-md space-y-5">
-          <div className="text-center mb-5">
-            <h1 className="text-2xl font-bold mt-2">Login</h1>
-            <p className="text-base-content/60">
-              Login to your Instructor account
-            </p>
-          </div>
+          <FormHead title="Login Instructor">
+            Login to your Instructor account
+          </FormHead>
 
           <form className="space-y-5">
             {/* Email Input */}
@@ -132,7 +128,7 @@ const InstructorLogin = () => {
 
       {/* <div className="relative min-h-screen grid lg:grid-cols-2 overflow-hidden dark:bg-gray-900"> */}
       <LoginPopup />
-    {/* </div> */}
+      {/* </div> */}
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import { FaFacebook, FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
-import Testimonial from "../pages/Testimonial";
-import CoursesList, { tempCourseData } from "../_components/CoursesList";
+import { tempCourseData } from "../_components/CoursesList";
 import { useParams } from "react-router";
 import {
   Breadcrumb,
@@ -10,13 +9,14 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { CourseType, DisplayRating } from "../_components/CourseBox";
+import CourseBox, { CourseType, DisplayRating } from "../_components/CourseBox";
 import { Separator } from "@/components/ui/separator";
 import tempInstructorImg from "@/assets/images/temp-instructor-img.png";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import CourseInfo from "../_components/CourseInfo";
+import ListContainer from "@/components/ui/ListContainer";
 
 const CoursePage = () => {
   const { id } = useParams();
@@ -107,8 +107,13 @@ const CoursePage = () => {
         <CourseAction course={course} />
       </main>
 
-      <Testimonial />
-      <CoursesList />
+      <ListContainer
+        header="Similar courses"
+        path="/courses"
+        render={tempCourseData.map((course) => (
+          <CourseBox key={course.id} course={course} />
+        ))}
+      />
     </section>
   );
 };
