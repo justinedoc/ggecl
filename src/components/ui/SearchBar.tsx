@@ -12,7 +12,7 @@ function SearchBar({ show = false }) {
         placeholder="Search courses..."
         title="Press Enter to search"
         aria-label="Search courses"
-        className="w-full lg:w-[36rem] max-w-xl px-4 md:py-2 py-3 pl-10 rounded-md  bg-transparent border border-gray-500/30 dark:border-blue-300/30 focus:outline-none focus:ring-2 focus:ring-blue-400/50"
+        className="w-full lg:w-[34rem] max-w-xl px-4 md:py-2 py-3 pl-10 rounded-md  bg-transparent border border-gray-500/30 dark:border-blue-300/30 focus:outline-none focus:ring-2 focus:ring-blue-400/50"
       />
       <Search
         size={18}
