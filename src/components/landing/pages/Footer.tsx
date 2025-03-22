@@ -13,8 +13,7 @@ function Footer() {
           width={55}
         />
         <p className="font-light mb-5 my-3">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. In,
-          reiciendis? Lorem ipsum dolor, sit amet consectetur adipisicing
+        Begin your study abroad journey with ease, secure, reliable, and tailored support every step of the way.
         </p>
 
         <div className="flex gap-5 items-center mt-auto">
