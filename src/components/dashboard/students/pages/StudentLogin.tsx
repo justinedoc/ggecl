@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FaGoogle, FaArrowRight } from "react-icons/fa";
 import LoginPopup from "../_components/LoginPopup.tsx";
 import uiImg from "@/assets/images/logoforsignup.png";
-
+import GoogleSigninBtn from "@/components/auth/ui/GoogleSigninBtn.tsx";
 const StudentLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -17,7 +17,7 @@ const StudentLogin = () => {
       <div className="absolute top-10 left-20 w-56 h-56 bg-blue-500/20 rounded-full blur-3xl"></div>
       <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-green-400/20 rounded-full blur-2xl"></div>
 
-      <div className="flex flex-col justify-center items-center p-6 sm:p- z-10 mt-8">
+      <div className="flex flex-col justify-center items-center p-6 sm:p- z-10 md:-mt-12 -mt-10">
         <div className="w-full max-w-md space-y-5">
           <div className="text-center mb-5">
             <h1 className="text-2xl font-bold mt-2">Login</h1>
@@ -26,7 +26,7 @@ const StudentLogin = () => {
             </p>
           </div>
 
-          <form className="space-y-5">
+          <form className="space-y-5 ">
             {/* Email Input */}
             <div className="form-control">
               <label htmlFor="email" className="label mb-2">
@@ -105,11 +105,8 @@ const StudentLogin = () => {
           </div>
 
           {/* Google Login */}
-          <div className="mt-6 flex justify-center w-full">
-            <button className="btn btn-outline btn-google flex items-center justify-center w-full py-2 rounded-md text-white flex-row gap-2">
-              <FaGoogle className="text-xl" />
-              <span>Google</span>
-            </button>
+          <div className="w-full">
+            <GoogleSigninBtn>Continue with Google</GoogleSigninBtn>
           </div>
 
           {/* Signup Link */}

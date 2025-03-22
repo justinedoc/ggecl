@@ -116,9 +116,9 @@ const Login = () => {
         </div>
       </div>
 
-      <Link to="/" className="h-screen max-w-7xl md:block hidden">
+      <div className="h-screen max-w-7xl md:block hidden">
         <img src="src/assets/images/logoforsignup.png" alt="" />
-      </Link>
+      </div>
 
       {/* <div className="relative min-h-screen grid lg:grid-cols-2 overflow-hidden dark:bg-gray-900"> */}
       <LoginPopup />

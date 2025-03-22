@@ -5,6 +5,7 @@ import { FaGoogle, FaArrowRight } from "react-icons/fa";
 import LoginPopup from "../components/LoginPopup.tsx";
 import uiImg from "@/assets/images/logoforsignup.png";
 import { FormHead } from "@/components/auth/ui/FormHead.tsx";
+import GoogleSigninBtn from "@/components/auth/ui/GoogleSigninBtn.tsx";
 
 const InstructorLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -18,7 +19,7 @@ const InstructorLogin = () => {
       <div className="absolute top-10 left-20 w-56 h-56 bg-blue-500/20 rounded-full blur-3xl"></div>
       <div className="absolute top-1/2 left-1/3 w-40 h-40 bg-green-400/20 rounded-full blur-2xl"></div>
 
-      <div className="flex flex-col justify-center items-center p-6 sm:p- z-10 mt-8">
+      <div className="flex flex-col justify-center items-center p-6 sm:p- z-10  md:-mt-12 -mt-10">
         <div className="w-full max-w-md space-y-5">
           <FormHead title="Login Instructor">
             Login to your Instructor account
@@ -102,12 +103,9 @@ const InstructorLogin = () => {
             <hr className="flex-grow border-t border-base-content/20 border border-gray-500 dark:border-gray-300" />
           </div>
 
-          {/* Google Login */}
-          <div className="mt-6 flex justify-center w-full">
-            <button className="btn btn-outline btn-google flex items-center justify-center w-full py-2 rounded-md text-white flex-row gap-2">
-              <FaGoogle className="text-xl" />
-              <span>Google</span>
-            </button>
+         {/* Google Login */}
+         <div className="w-full">
+            <GoogleSigninBtn>Continue with Google</GoogleSigninBtn>
           </div>
 
           {/* Signup Link */}

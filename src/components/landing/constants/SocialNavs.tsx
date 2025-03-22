@@ -3,19 +3,19 @@ import {
   FaPinterest,
   FaSquareInstagram,
   FaXTwitter,
-  FaYoutube,
+  FaFacebook,
 } from "react-icons/fa6";
 
 export const socialNavs = [
   {
     icon: <FaXTwitter size={24} />,
     name: "Twitter",
-    url: "#",
+    url: "https://www.x.com/goldengoshenedu",
   },
   {
     icon: <FaSquareInstagram size={24} />,
     name: "Instagram",
-    url: "#",
+    url: "http://www.instagram.com/goldengosheneducation",
   },
   {
     icon: <FaPinterest size={24} />,
@@ -25,11 +25,11 @@ export const socialNavs = [
   {
     icon: <FaLinkedin size={24} />,
     name: "LinkedIn",
-    url: "#",
+    url: "https://www.linkedin.com/company/goldengosheneducationalconsultancy",
   },
   {
-    icon: <FaYoutube size={24} />,
+    icon: <FaFacebook size={24} />,
     name: "YouTube",
-    url: "#",
+    url: "https://www.facebook.com/goldengosheneducationalconsultancy",
   },
 ] as const;
